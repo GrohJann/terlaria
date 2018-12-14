@@ -21,3 +21,6 @@ hs_err_pid*
 # IntelliJ configs/etc.
 .idea
 *.iml
+
+# others
+*.io
