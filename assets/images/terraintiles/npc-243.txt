@@ -1,0 +1,9 @@
+width=16
+height=16
+gfxwidth=40
+gfxheight=30
+gfxoffsety=8
+frames=4
+framestyle=1
+noiceball=1
+jumphurt=1
