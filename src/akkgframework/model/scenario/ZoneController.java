@@ -125,6 +125,8 @@ public class ZoneController extends GraphicalObject{
             objects.add(theBurg);
             //Place Start-Bauer
             new Bauer(theBurg);
+        }else if (level == 2){
+        
         }
         registerAllObjects();
     }
