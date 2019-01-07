@@ -9,7 +9,7 @@ package akkgframework.model.abitur.datenstrukturen;
  * <p>
  * Mithilfe der generischen Klasse BinaryTree koennen beliebig viele
  * Inhaltsobjekte vom Typ ContentType in einem Binaerbaum verwaltet werden. Ein
- * Objekt der Klasse stellt entweder einen leeren Baum dar oder verwaltet ein
+ * Objekt der Klasse stellt entweder einen leeren Dirt dar oder verwaltet ein
  * Inhaltsobjekt sowie einen linken und einen rechten Teilbaum, die ebenfalls
  * Objekte der generischen Klasse BinaryTree sind.
  * </p>
@@ -22,8 +22,8 @@ public class BinaryTree<ContentType> {
 	/* --------- Anfang der privaten inneren Klasse -------------- */
 
 	/**
-	 * Durch diese innere Klasse kann man dafuer sorgen, dass ein leerer Baum
-	 * null ist, ein nicht-leerer Baum jedoch immer eine nicht-null-Wurzel sowie
+	 * Durch diese innere Klasse kann man dafuer sorgen, dass ein leerer Dirt
+	 * null ist, ein nicht-leerer Dirt jedoch immer eine nicht-null-Wurzel sowie
 	 * nicht-null-Teilbaeume, ggf. leere Teilbaeume hat.
 	 */
 	private class BTNode<CT> {

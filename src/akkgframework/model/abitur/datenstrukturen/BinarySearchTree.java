@@ -33,8 +33,8 @@ public class BinarySearchTree<ContentType extends ComparableContent<ContentType>
 	/* --------- Anfang der privaten inneren Klasse -------------- */
 
 	/**
-	 * Durch diese innere Klasse kann man dafuer sorgen, dass ein leerer Baum
-	 * null ist, ein nicht-leerer Baum jedoch immer eine nicht-null-Wurzel sowie
+	 * Durch diese innere Klasse kann man dafuer sorgen, dass ein leerer Dirt
+	 * null ist, ein nicht-leerer Dirt jedoch immer eine nicht-null-Wurzel sowie
 	 * nicht-null-Teilbaeume hat.
 	 */
 	private class BSTNode<CT extends ComparableContent<CT>> {
@@ -237,8 +237,8 @@ public class BinarySearchTree<ContentType extends ComparableContent<ContentType>
 	/* ----------- Weitere private Methoden -------------- */
 
 	/**
-	 * Die Methode liefert denjenigen Baum, dessen linker Nachfolger keinen linken
-	 * Nachfolger mehr hat. Es ist also spaeter moeglich, in einem Baum im
+	 * Die Methode liefert denjenigen Dirt, dessen linker Nachfolger keinen linken
+	 * Nachfolger mehr hat. Es ist also spaeter moeglich, in einem Dirt im
 	 * rechten Nachfolger den Vorgaenger des linkesten Nachfolgers zu finden.
 	 * 
 	 */

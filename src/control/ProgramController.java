@@ -3,8 +3,9 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
-import akkgframework.model.scenario.ScenarioController;
-import model.House;
+import model.Background;
+import model.blocks.Dirt;
+import model.blocks.Grass;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -37,8 +38,14 @@ public class ProgramController {
     public void startProgram() {
         programTimer = 0;
         // ******************************************* Ab hier euer eigener Code! *******************************************
-        House aHouse = new House();
-        uiController.registerObject(aHouse);
+        Background background = new Background(0, 0);
+        uiController.registerObject(background);
+
+        Grass grass = new Grass(0, 512);
+        uiController.registerObject(grass);
+
+        Dirt dirt = new Dirt(0,543);
+        uiController.registerObject(dirt);
 
     }
 
