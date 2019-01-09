@@ -62,8 +62,8 @@ public class Tileset {
 
     /**
      * Liefert ein Stück des Tilesets zurück.
-     * @param i Die Zeile des Stücks im Tileset, beginnend bei 0.
-     * @param j Die Spalte des Stücks im Tileset, beginnend bei 0.
+     * @param j Die Zeile des Stücks im Tileset, beginnend bei 0.
+     * @param i Die Spalte des Stücks im Tileset, beginnend bei 0.
      * @return
      */
     public BufferedImage getTile(int i, int j){
