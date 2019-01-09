@@ -6,6 +6,10 @@ import akkgframework.control.fundamental.SoundController;
 import akkgframework.model.scenario.ScenarioController;
 import model.House;
 import model.Player;
+import model.textures.Background;
+import model.textures.blocks.Dirt;
+import model.textures.blocks.Grass;
+import model.textures.blocks.Water;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -21,6 +25,8 @@ public class ProgramController {
     private Display programmZeitAnzeige;
     private SoundController soundController;
     private Player player;
+
+    Water water = new Water(100,100);
 
     /**
      * Konstruktor
@@ -39,6 +45,16 @@ public class ProgramController {
     public void startProgram() {
         programTimer = 0;
         // ******************************************* Ab hier euer eigener Code! *******************************************
+        Background background = new Background(0, 0);
+        uiController.registerObject(background);
+
+        Grass grass = new Grass(0, 512);
+        uiController.registerObject(grass);
+
+        Dirt dirt = new Dirt(0,543);
+        uiController.registerObject(dirt);
+
+        uiController.registerObject(water);
         House aHouse = new House();
         player=new Player(uiController);
         uiController.registerObject(aHouse);
