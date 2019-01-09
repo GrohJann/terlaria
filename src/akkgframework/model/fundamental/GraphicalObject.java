@@ -7,6 +7,7 @@ import akkgframework.view.DrawableObject;
 import javax.imageio.ImageIO;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -132,6 +133,11 @@ public abstract class GraphicalObject implements DrawableObject {
 
     @Override
     public void mousePressed(MouseEvent e){
+
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e){
 
     }
 
