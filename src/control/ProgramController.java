@@ -3,13 +3,11 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
-import akkgframework.model.scenario.ScenarioController;
-import model.House;
-import model.Player;
 import model.textures.Background;
 import model.textures.blocks.Dirt;
 import model.textures.blocks.Grass;
 import model.textures.blocks.Water;
+import model.textures.entitys.Player;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -24,7 +22,8 @@ public class ProgramController {
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
     private SoundController soundController;
-    private Player player;
+    //private Player player;
+    private model.textures.entitys.Player player;
 
     Water water = new Water(100,100);
 
@@ -55,9 +54,8 @@ public class ProgramController {
         uiController.registerObject(dirt);
 
         uiController.registerObject(water);
-        House aHouse = new House();
-        player=new Player(uiController);
-        uiController.registerObject(aHouse);
+        //player=new Player(uiController);
+        player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
     }
 
