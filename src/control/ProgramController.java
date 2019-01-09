@@ -3,9 +3,10 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
-import model.Background;
-import model.blocks.Dirt;
-import model.blocks.Grass;
+import model.textures.Background;
+import model.textures.blocks.Dirt;
+import model.textures.blocks.Grass;
+import model.textures.blocks.Water;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -20,6 +21,8 @@ public class ProgramController {
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
     private SoundController soundController;
+    
+    Water water = new Water(100,100);
 
     /**
      * Konstruktor
@@ -46,7 +49,8 @@ public class ProgramController {
 
         Dirt dirt = new Dirt(0,543);
         uiController.registerObject(dirt);
-
+        
+        uiController.registerObject(water);
     }
 
     /**
@@ -56,7 +60,7 @@ public class ProgramController {
     public void updateProgram(double dt){
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
-
+        
     }
 
 }

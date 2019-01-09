@@ -1,4 +1,4 @@
-package model;
+package model.textures;
 
 import akkgframework.model.fundamental.GraphicalObject;
 import akkgframework.view.DrawTool;
