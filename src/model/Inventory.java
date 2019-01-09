@@ -1,10 +1,9 @@
-package model.textures;
+package model;
 
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.abitur.datenstrukturen.List;
 import akkgframework.model.fundamental.GraphicalObject;
 import akkgframework.view.DrawTool;
-
 import java.awt.event.MouseWheelEvent;
 
 
@@ -53,9 +52,11 @@ public class Inventory extends GraphicalObject {
         return items.getContent();
     }
 
-
-
     public int getPlaces(){
+        return places;
+    }
+
+    public int getUsedPlaces(){
         return usedPlaces;
     }
 
