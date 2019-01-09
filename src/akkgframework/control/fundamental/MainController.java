@@ -28,13 +28,9 @@ public class MainController {
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
-        int x = width / 2;
-        int y = height / 2;
         // Berechne die beste obere linke Ecke für das Fenster so, dass es genau mittig erscheint
-        x = x - Config.WINDOW_WIDTH / 2;
-        y = 10;
         // Erzeuge ein neues Fenster zum Zeichnen
-        DrawFrame drawFrame = new DrawFrame(Config.WINDOW_TITLE, x, y, Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
+        DrawFrame drawFrame = new DrawFrame(Config.WINDOW_TITLE,0,0, width, height);
         drawFrame.setResizable(false);
         // Übergibt den weiteren Programmfluss an das neue Objekt der Klasse UIController
         if ( Config.INFO_MESSAGES) System.out.println("  > MainController: Erzeuge UIController und übergebe Drawframe-Objekt-Referenz.");
