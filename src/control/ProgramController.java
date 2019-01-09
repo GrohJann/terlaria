@@ -3,6 +3,9 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
+import akkgframework.model.scenario.ScenarioController;
+import model.House;
+import model.Player;
 import model.textures.Background;
 import model.textures.blocks.Dirt;
 import model.textures.blocks.Grass;
@@ -21,7 +24,8 @@ public class ProgramController {
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
     private SoundController soundController;
-    
+    private Player player;
+
     Water water = new Water(100,100);
 
     /**
@@ -49,8 +53,12 @@ public class ProgramController {
 
         Dirt dirt = new Dirt(0,543);
         uiController.registerObject(dirt);
-        
+
         uiController.registerObject(water);
+        House aHouse = new House();
+        player=new Player(uiController);
+        uiController.registerObject(aHouse);
+        uiController.drawObjectOnPanel(player,0);
     }
 
     /**
@@ -60,7 +68,7 @@ public class ProgramController {
     public void updateProgram(double dt){
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
-        
+
     }
 
 }
