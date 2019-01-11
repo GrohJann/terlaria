@@ -24,7 +24,7 @@ public class Player extends GraphicalObject {
         this.tileset = new Tileset("assets/images/terraintiles/entity_player_01.gif", 32, 48);
         this.uic = uic;
 
-        speed = 100;
+        speed = 75;
         image = 0;
         timer = 0;
         lookingLeft = true;
@@ -32,17 +32,14 @@ public class Player extends GraphicalObject {
     }
 
     public void draw(DrawTool drawTool) {
-        //draw.setCurrentColor(255,0,0,255);
-        //draw.drawFilledRectangle(x+gd.getDisplayMode().getWidth()/2,y,50,50);
         drawTool.drawImage(tileset.getTile(0, image), x + gd.getDisplayMode().getWidth() / 2, y);
     }
 
     public void update(double dt) {
-        /*if (uic.isKeyDown(KeyEvent.VK_W)){
-            y=y+speed*dt;
-        }*/
-        if (uic.isKeyDown(KeyEvent.VK_SPACE)) {
-            y = y - 5;
+        if (uic.isKeyDown(KeyEvent.VK_W)){
+            y -= 10;
+        }else if (uic.isKeyDown(KeyEvent.VK_SPACE)) {
+            y -= 20;
         }
         if (uic.isKeyDown(KeyEvent.VK_A)) {
             x = x - speed * dt;
@@ -62,7 +59,7 @@ public class Player extends GraphicalObject {
         /*
          * animation
          */
-        timer = timer + dt*1.5;
+        timer = timer + dt*2;
 
         if (lookingLeft) {
             if (!idle) {
@@ -80,7 +77,6 @@ public class Player extends GraphicalObject {
                 }
 
 
-
                 if (timer >= 2 && timer <= 2.5) {
                     image = 4;
                 }
@@ -95,7 +91,6 @@ public class Player extends GraphicalObject {
                 }
 
 
-
                 if (timer >= 4 && timer <= 4.5) {
                     image = 8;
                 }
@@ -108,7 +103,6 @@ public class Player extends GraphicalObject {
                 if (timer >= 5.5 && timer <= 6) {
                     image = 11;
                 }
-
 
 
                 if (timer >= 6 && timer <= 6.5) {
@@ -143,6 +137,11 @@ public class Player extends GraphicalObject {
                 image = 14;
             }
         }
+    }
+
+
+    public void addGravity(double dt){
+        y += speed * dt;
     }
 }
 

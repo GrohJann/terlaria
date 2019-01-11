@@ -3,6 +3,7 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
+import model.Terrain;
 import model.textures.Background;
 import model.textures.blocks.Dirt;
 import model.textures.blocks.Grass;
@@ -22,10 +23,9 @@ public class ProgramController {
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
     private SoundController soundController;
-    //private Player player;
-    private model.textures.entitys.Player player;
 
-    Water water = new Water(100,100);
+    private model.textures.entitys.Player player;
+    private Terrain terrain;
 
     /**
      * Konstruktor
@@ -47,14 +47,9 @@ public class ProgramController {
         Background background = new Background(0, 0);
         uiController.registerObject(background);
 
-        Grass grass = new Grass(0, 512);
-        uiController.registerObject(grass);
+        terrain = new Terrain();
+        uiController.registerObject(terrain);
 
-        Dirt dirt = new Dirt(0,543);
-        uiController.registerObject(dirt);
-
-        uiController.registerObject(water);
-        //player=new Player(uiController);
         player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
     }
@@ -66,7 +61,18 @@ public class ProgramController {
     public void updateProgram(double dt){
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
+        //handlePlayerTerrainCollision(dt);
+    }
 
+    private void handlePlayerTerrainCollision(double dt){
+        boolean collision = false;
+        for (int i= 0; i < terrain.getTerrain().length; i++){
+            if (terrain.getTerrain()[i][(int) (player.getX()) / 32].collidesWith(player))
+                collision = true;
+        }
+
+        if (!collision)
+            player.addGravity(dt);
     }
 
 }
