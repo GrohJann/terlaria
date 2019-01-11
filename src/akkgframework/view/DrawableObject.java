@@ -2,6 +2,7 @@ package akkgframework.view;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 /**
  * Interface für Objekte, die man zeichnen und steuern kann.
@@ -32,5 +33,7 @@ public interface DrawableObject{
     void mousePressed(MouseEvent e);
 
     void keyTyped(KeyEvent e);
+
+    void mouseWheelMoved(MouseWheelEvent e);
 
 }
