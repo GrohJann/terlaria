@@ -64,6 +64,9 @@ public class ProgramController {
         player=new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
 
+        //soundController.loadSound("/sounds/HiHatLoopV1.wav", "loop", true);
+        //soundController.playSound("loop");
+
         quests = new Queue<>();
         Quest newQuest = new Quest(player,"Go to the right", 1, false);
         quests.enqueue(newQuest);
@@ -97,6 +100,7 @@ public class ProgramController {
     public void updateProgram(double dt){
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
+
     }
 
 }
