@@ -4,9 +4,12 @@ import akkgframework.control.fundamental.SoundController;
 import akkgframework.model.abitur.datenstrukturen.Stack;
 
 public class MusicStack {
+    //Attribute
+    private boolean stack1to2;
+
+    //Referenzen
     private Stack<String> sampleStack1;
     private Stack<String> sampleStack2;
-    private boolean stack1to2;
     SoundController soundController;
 
     public MusicStack(SoundController soundController){
