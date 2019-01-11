@@ -3,8 +3,12 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
+import akkgframework.model.abitur.datenstrukturen.List;
+import akkgframework.model.abitur.datenstrukturen.Queue;
 import akkgframework.model.scenario.ScenarioController;
 import model.Player;
+import model.Quest;
+import model.QuestDisplay;
 import model.textures.Background;
 import model.textures.blocks.Dirt;
 import model.textures.blocks.Grass;
@@ -24,6 +28,8 @@ public class ProgramController {
     private Display programmZeitAnzeige;
     private SoundController soundController;
     private Player player;
+    private Queue<Quest> quests;
+    private QuestDisplay questDisplay;
 
 
     /**
@@ -60,6 +66,31 @@ public class ProgramController {
 
         //soundController.loadSound("/sounds/HiHatLoopV1.wav", "loop", true);
         //soundController.playSound("loop");
+
+        quests = new Queue<>();
+        Quest newQuest = new Quest(player,"Go to the right", 1, false);
+        quests.enqueue(newQuest);
+        Quest newQuest1 = new Quest(player,"Jump", 3, false);
+        quests.enqueue(newQuest1);
+        Quest newQuest2 = new Quest(player,"Go to the left", 1, false);
+        quests.enqueue(newQuest2);
+        Quest newQuest3 = new Quest(player,"Jump", 5, false);
+        quests.enqueue(newQuest3);
+        Quest newQuest4 = new Quest(player,"Jump", 1, false);
+        quests.enqueue(newQuest4);
+        Quest newQuest5 = new Quest(player,"Exist", 1, false);
+        quests.enqueue(newQuest5);
+        Quest newQuest6 = new Quest(player,"Exist", 1, false);
+        quests.enqueue(newQuest6);
+        Quest newQuest7 = new Quest(player,"Exist", 1, false);
+        quests.enqueue(newQuest7);
+        Quest newQuest8 = new Quest(player,"Exist", 1, false);
+        quests.enqueue(newQuest8);
+        Quest newQuest9 = new Quest(player,"Exist", 1, false);
+        quests.enqueue(newQuest9);
+
+        questDisplay=new QuestDisplay(quests.front());
+        uiController.drawObjectOnPanel(questDisplay,0);
     }
 
     /**
