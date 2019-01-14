@@ -58,10 +58,7 @@ public class ProgramController {
         player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
 
-        //uiController.drawObjectOnPanel(soundController, 0);
-        //soundController.loadSound("assets/sounds/HiHatLoopV1.wav", "HiHatLoopV1", true);
-        //soundController.playSound("HiHatLoopV1");
-        //soundCon.playClip(new File("assets/sounds/HiHatLoopV1.wav"));
+        soundCon.playSound("assets/sounds/HiHatLoopV1.wav");
 
 
         createQuests();
