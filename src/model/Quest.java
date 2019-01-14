@@ -2,6 +2,7 @@ package model;
 
 import akkgframework.model.abitur.datenstrukturen.List;
 import akkgframework.model.fundamental.GraphicalObject;
+import model.textures.entitys.Player;
 
 public class Quest{
 
