@@ -10,6 +10,8 @@ import model.Terrain;
 import model.textures.Background;
 import model.textures.entitys.Player;
 
+import java.io.File;
+
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
  * mit jeder Frame im laufenden Programm aufgerufen.
@@ -22,7 +24,7 @@ public class ProgramController {
     // Referenzen
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
-    private SoundController soundController;
+    private SoundCon soundCon;
     private Queue<Quest> quests;
     private QuestDisplay questDisplay;
 
@@ -38,6 +40,7 @@ public class ProgramController {
      */
     public ProgramController(UIController uiController){
         this.uiController = uiController;
+        soundCon = new SoundCon();
     }
 
     /**
@@ -55,9 +58,19 @@ public class ProgramController {
         player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
 
-        //soundController.loadSound("/sounds/HiHatLoopV1.wav", "loop", true);
-        //soundController.playSound("loop");
+        //uiController.drawObjectOnPanel(soundController, 0);
+        //soundController.loadSound("assets/sounds/HiHatLoopV1.wav", "HiHatLoopV1", true);
+        //soundController.playSound("HiHatLoopV1");
+        //soundCon.playClip(new File("assets/sounds/HiHatLoopV1.wav"));
 
+
+        createQuests();
+
+        questDisplay=new QuestDisplay(quests.front());
+        uiController.drawObjectOnPanel(questDisplay,0);
+    }
+
+    private void createQuests(){
         quests = new Queue<>();
         Quest newQuest = new Quest(player,"Go to the right", 1, false);
         quests.enqueue(newQuest);
@@ -79,9 +92,6 @@ public class ProgramController {
         quests.enqueue(newQuest8);
         Quest newQuest9 = new Quest(player,"Exist", 1, false);
         quests.enqueue(newQuest9);
-
-        questDisplay=new QuestDisplay(quests.front());
-        uiController.drawObjectOnPanel(questDisplay,0);
     }
 
     /**
