@@ -71,7 +71,27 @@ public class ProgramController {
 
         //soundController.loadSound("/sounds/HiHatLoopV1.wav", "loop", true);
         //soundController.playSound("loop");
+        uiController.drawObjectOnPanel(soundController, 0);
+        soundController.loadSound("assets/sounds/HiHatLoopV1.wav", "HiHatLoopV1", true);
+        soundController.playSound("HiHatLoopV1");
 
+        createQuests();
+
+        questDisplay=new QuestDisplay(quests.front());
+        uiController.drawObjectOnPanel(questDisplay,0);
+    }
+
+    /**
+     * Diese Methode wird wiederholt automatisch aufgerufen und zwar für jede Frame einmal, d.h. über 25 mal pro Sekunde.
+     * @param dt Die Zeit in Sekunden, die seit dem letzten Aufruf der Methode vergangen ist.
+     */
+    public void updateProgram(double dt){
+        programTimer += dt;
+        // ******************************************* Ab hier euer eigener Code! *******************************************
+
+    }
+
+    private void createQuests(){
         quests = new Queue<>();
         Quest newQuest = new Quest(player,"Go to the right", 1, false);
         quests.enqueue(newQuest);
@@ -93,19 +113,5 @@ public class ProgramController {
         quests.enqueue(newQuest8);
         Quest newQuest9 = new Quest(player,"Exist", 1, false);
         quests.enqueue(newQuest9);
-
-        questDisplay=new QuestDisplay(quests.front());
-        uiController.drawObjectOnPanel(questDisplay,0);
     }
-
-    /**
-     * Diese Methode wird wiederholt automatisch aufgerufen und zwar für jede Frame einmal, d.h. über 25 mal pro Sekunde.
-     * @param dt Die Zeit in Sekunden, die seit dem letzten Aufruf der Methode vergangen ist.
-     */
-    public void updateProgram(double dt){
-        programTimer += dt;
-        // ******************************************* Ab hier euer eigener Code! *******************************************
-
-    }
-
 }
