@@ -3,17 +3,11 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
-import akkgframework.model.abitur.datenstrukturen.List;
 import akkgframework.model.abitur.datenstrukturen.Queue;
-import akkgframework.model.scenario.ScenarioController;
-import model.Player;
 import model.Quest;
 import model.QuestDisplay;
 import model.Terrain;
 import model.textures.Background;
-import model.textures.blocks.Dirt;
-import model.textures.blocks.Grass;
-import model.textures.blocks.Water;
 import model.textures.entitys.Player;
 
 /**
@@ -29,12 +23,11 @@ public class ProgramController {
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
     private SoundController soundController;
-    private Player player;
     private Queue<Quest> quests;
     private QuestDisplay questDisplay;
 
-    private model.textures.entitys.Player player;
     private Terrain terrain;
+    private Player player;
 
     /**
      * Konstruktor
