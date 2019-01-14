@@ -6,6 +6,7 @@ import akkgframework.control.fundamental.SoundController;
 import akkgframework.model.abitur.datenstrukturen.List;
 import akkgframework.model.abitur.datenstrukturen.Queue;
 import akkgframework.model.scenario.ScenarioController;
+import model.Inventory;
 import model.Player;
 import model.Quest;
 import model.QuestDisplay;
@@ -28,6 +29,7 @@ public class ProgramController {
     private Display programmZeitAnzeige;
     private SoundController soundController;
     private Player player;
+    private Inventory inventory;
     private Queue<Quest> quests;
     private QuestDisplay questDisplay;
 
@@ -61,8 +63,11 @@ public class ProgramController {
         Water water = new Water(100,100);
         uiController.registerObject(water);
 
-        player=new Player(uiController);
+        player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
+
+        inventory = new Inventory(uiController);
+        uiController.registerObject(inventory);
 
         //soundController.loadSound("/sounds/HiHatLoopV1.wav", "loop", true);
         //soundController.playSound("loop");
