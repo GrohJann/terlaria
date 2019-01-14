@@ -16,6 +16,7 @@ public class Player extends GraphicalObject {
 
     private int speed;
     private int image;
+    private double time;
     private double timer;
     private boolean lookingLeft;
     private boolean idle;
@@ -24,7 +25,7 @@ public class Player extends GraphicalObject {
         this.tileset = new Tileset("assets/images/terraintiles/entity_player_01.gif", 32, 48);
         this.uic = uic;
 
-        speed = 75;
+        speed = 300;
         image = 0;
         timer = 0;
         lookingLeft = true;
@@ -137,11 +138,96 @@ public class Player extends GraphicalObject {
                 image = 14;
             }
         }
+        time+=dt;
     }
 
+    public int getTask(String task){
+        if(task.equalsIgnoreCase("y")){
+            return (int)y;
+        }
+        if(task.equalsIgnoreCase("x")) {
+            return (int) x;
+        }
+        if(task.equalsIgnoreCase("time")) {
+            return (int) time;
+        }
+        return 0;
+    }
 
     public void addGravity(double dt){
         y += speed * dt;
+    }
+
+    public Tileset getTileset() {
+        return tileset;
+    }
+
+    public void setTileset(Tileset tileset) {
+        this.tileset = tileset;
+    }
+
+    public UIController getUic() {
+        return uic;
+    }
+
+    public void setUic(UIController uic) {
+        this.uic = uic;
+    }
+
+    public GraphicsDevice getGd() {
+        return gd;
+    }
+
+    public void setGd(GraphicsDevice gd) {
+        this.gd = gd;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public double getTime() {
+        return time;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
+    }
+
+    public double getTimer() {
+        return timer;
+    }
+
+    public void setTimer(double timer) {
+        this.timer = timer;
+    }
+
+    public boolean isLookingLeft() {
+        return lookingLeft;
+    }
+
+    public void setLookingLeft(boolean lookingLeft) {
+        this.lookingLeft = lookingLeft;
+    }
+
+    public boolean isIdle() {
+        return idle;
+    }
+
+    public void setIdle(boolean idle) {
+        this.idle = idle;
     }
 }
 

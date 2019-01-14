@@ -72,26 +72,34 @@ public class ProgramController {
 
     private void createQuests(){
         quests = new Queue<>();
-        Quest newQuest = new Quest(player,"Go to the right", 1, false);
+        Quest newQuest = new Quest(player,"Go to the right", "x",1, 150,false);
         quests.enqueue(newQuest);
-        Quest newQuest1 = new Quest(player,"Jump", 3, false);
+        Quest newQuest1 = new Quest(player,"Spend time in the game", "time",10, 10,false);
         quests.enqueue(newQuest1);
-        Quest newQuest2 = new Quest(player,"Go to the left", 1, false);
+        Quest newQuest2 = new Quest(player,"Go to the left", "x",1, -900,false);
         quests.enqueue(newQuest2);
-        Quest newQuest3 = new Quest(player,"Jump", 5, false);
+        Quest newQuest3 = new Quest(player,"Go to the right", "x",1, 950,false);
         quests.enqueue(newQuest3);
-        Quest newQuest4 = new Quest(player,"Jump", 1, false);
+        Quest newQuest4 = new Quest(player,"Go to the left", "x",1,-560, false);
         quests.enqueue(newQuest4);
-        Quest newQuest5 = new Quest(player,"Exist", 1, false);
+        Quest newQuest5 = new Quest(player,"Spend time in the game", "time",60,60, false);
         quests.enqueue(newQuest5);
-        Quest newQuest6 = new Quest(player,"Exist", 1, false);
+        Quest newQuest6 = new Quest(player,"Go to the right", "x",1, 900,false);
         quests.enqueue(newQuest6);
-        Quest newQuest7 = new Quest(player,"Exist", 1, false);
+        Quest newQuest7 = new Quest(player,"Go to the left", "x",1, -150,false);
         quests.enqueue(newQuest7);
-        Quest newQuest8 = new Quest(player,"Exist", 1, false);
+        Quest newQuest8 = new Quest(player,"Go to the right", "x",1, 250,false);
         quests.enqueue(newQuest8);
-        Quest newQuest9 = new Quest(player,"Exist", 1, false);
+        Quest newQuest9 = new Quest(player,"Spend time in the game", "time",120, 120,false);
         quests.enqueue(newQuest9);
+        Quest newQuest10 = new Quest(player,"Go to the left", "x",1, -950,false);
+        quests.enqueue(newQuest10);
+        Quest newQuest11 = new Quest(player,"Go to the right", "x",1,560, false);
+        quests.enqueue(newQuest11);
+        Quest newQuest12 = new Quest(player,"Spend time in the game", "time",300,300, false);
+        quests.enqueue(newQuest12);
+        Quest newQuest13 = new Quest(player,"Go to the left", "x",1, -900,false);
+        quests.enqueue(newQuest13);
     }
 
     /**
@@ -102,6 +110,14 @@ public class ProgramController {
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
         //handlePlayerTerrainCollision(dt);
+        if(!quests.isEmpty()) {
+            quests.front().check();
+            if (quests.front().isDone()) {
+                quests.dequeue();
+                player.setTime(0);
+                questDisplay.setCurrentQuest(quests.front());
+            }
+        }
     }
 
     private void handlePlayerTerrainCollision(double dt){
