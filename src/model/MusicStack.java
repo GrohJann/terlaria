@@ -8,40 +8,38 @@ public class MusicStack {
     private boolean stack1to2;
 
     //Referenzen
-    private Stack<String> sampleStack1;
-    private Stack<String> sampleStack2;
-    SoundController soundController;
+    private Stack<Sound> sampleStack1;
+    private Stack<Sound> sampleStack2;
 
-    public MusicStack(SoundController soundController){
-        this.soundController = soundController;
+    public MusicStack(){
         sampleStack1 = new Stack<>();
         sampleStack2 = new Stack<>();
         stack1to2 = true;
     }
 
-    public boolean addSample(String filename, String name){
-        if(filename != null && name != null){
-            soundController.loadSound(filename, name, false);
-            sampleStack1.push(name);
+    public boolean addSample(String filename){
+        if(filename != null){
+            Sound tmp = new Sound(filename);
+            sampleStack1.push(tmp);
         }
         return false;
     }
 
-    public String getSample(){
+    public void playSample(){
         if(stack1to2){
             sampleStack2.push(sampleStack1.top());
             sampleStack1.pop();
             if(sampleStack1.isEmpty()){
                 stack1to2 = false;
             }
-            return sampleStack2.top();
+            sampleStack2.top().play();
         }else{
             sampleStack1.push(sampleStack2.top());
             sampleStack2.pop();
             if(sampleStack2.isEmpty()){
                 stack1to2 = true;
             }
-            return sampleStack1.top();
+            sampleStack1.top().play();
         }
     }
 

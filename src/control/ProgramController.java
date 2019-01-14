@@ -6,6 +6,7 @@ import akkgframework.control.fundamental.SoundController;
 import akkgframework.model.abitur.datenstrukturen.Queue;
 import model.Quest;
 import model.QuestDisplay;
+import model.Sound;
 import model.Terrain;
 import model.textures.Background;
 import model.textures.entitys.Player;
@@ -58,7 +59,7 @@ public class ProgramController {
         player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
 
-        soundCon.playSound("assets/sounds/HiHatLoopV1.wav");
+        //soundCon.playSound("assets/sounds/HiHatLoopV1.wav");
 
 
         createQuests();
