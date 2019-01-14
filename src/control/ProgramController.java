@@ -14,6 +14,8 @@ import model.textures.blocks.Dirt;
 import model.textures.blocks.Grass;
 import model.textures.blocks.Water;
 
+import java.io.File;
+
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
  * mit jeder Frame im laufenden Programm aufgerufen.
@@ -26,7 +28,7 @@ public class ProgramController {
     // Referenzen
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
-    private SoundController soundController;
+    private SoundCon soundCon;
     private Player player;
     private Queue<Quest> quests;
     private QuestDisplay questDisplay;
@@ -41,6 +43,7 @@ public class ProgramController {
      */
     public ProgramController(UIController uiController){
         this.uiController = uiController;
+        soundCon = new SoundCon();
     }
 
     /**
@@ -64,9 +67,11 @@ public class ProgramController {
         player=new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
 
-        uiController.drawObjectOnPanel(soundController, 0);
-        soundController.loadSound("assets/sounds/HiHatLoopV1.wav", "HiHatLoopV1", true);
-        soundController.playSound("HiHatLoopV1");
+        //uiController.drawObjectOnPanel(soundController, 0);
+        //soundController.loadSound("assets/sounds/HiHatLoopV1.wav", "HiHatLoopV1", true);
+        //soundController.playSound("HiHatLoopV1");
+        //soundCon.playClip(new File("assets/sounds/HiHatLoopV1.wav"));
+
 
         createQuests();
 
