@@ -35,7 +35,7 @@ public class MusicStack {
                     waitingSamples.dequeue();
                 }
                 sampleStack1.top().play();
-                System.out.println("1 - " + sampleStack1.top().getPath() + " - " + sampleStack1.top().toString());
+                //System.out.println("1 - " + sampleStack1.top().getPath() + " - " + sampleStack1.top().toString());
                 sampleStack2.push(sampleStack1.top());
                 sampleStack1.pop();
                 if (sampleStack1.isEmpty()) {
@@ -49,7 +49,7 @@ public class MusicStack {
                     waitingSamples.dequeue();
                 }
                 sampleStack2.top().play();
-                System.out.println("2 - " + sampleStack2.top().getPath() + " - " + sampleStack2.top().toString());
+                //System.out.println("2 - " + sampleStack2.top().getPath() + " - " + sampleStack2.top().toString());
                 sampleStack1.push(sampleStack2.top());
                 sampleStack2.pop();
                 if (sampleStack2.isEmpty()) {
