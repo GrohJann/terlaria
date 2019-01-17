@@ -6,14 +6,15 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 public class Sound {
-
+    private String path;
     private Clip clip;
     public Sound(String fileName) {
         // specify the sound to play
         // (assuming the sound can be played by the audio system)
         // from a wave File
         try {
-            File file = new File(fileName);
+            File file = new File("assets/sounds/" +fileName +".wav");
+            path = "assets/sounds/" +fileName +".wav";
             if (file.exists()) {
                 AudioInputStream sound = AudioSystem.getAudioInputStream(file);
                 // load the sound into memory (a Clip)
@@ -52,5 +53,8 @@ public class Sound {
     }
     public void stop(){
         clip.stop();
+    }
+    public String getPath(){
+        return path;
     }
 }

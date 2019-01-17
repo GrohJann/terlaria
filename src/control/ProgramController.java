@@ -100,6 +100,8 @@ public class ProgramController {
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
         //handlePlayerTerrainCollision(dt);
+        soundCon.update(dt);
+
     }
 
     private void handlePlayerTerrainCollision(double dt){

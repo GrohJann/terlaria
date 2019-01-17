@@ -8,28 +8,50 @@ import java.io.File;
 
 public class SoundCon{
 
-    Sound loop = new Sound("assets/sounds/HiHatLoopV1.wav");
+    //Sound loop = new Sound("HiHatLoopV1.wav");
     MusicStack melody = new MusicStack();
+    double timer;
+    double timer2;
+    boolean loopPlays = false;
 
     public SoundCon(){
-        loop.play();
-        loop.loop();
-        melody.addSample("assets/sounds/temp C.wav");
-        melody.playSample();
-    }
 
-    public static synchronized void playSound(String file){
-        try{
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream((new File(file))));
-            clip.start();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        melody.addSample("melody C3");
+        melody.addSample("melody D3");
+        melody.playSample();
+        timer = 0;
     }
 
     public void update(double dt){
+        timer = timer + dt;
+        timer2 = timer2 + dt;
 
+        if(timer >= 1){
+            melody.playSample();
+            timer = 0;
+        }
+
+        /*if(!loopPlays){
+            loop.play();
+            loop.loop();
+            loopPlays = true;
+        }*/
+
+        if(timer2 >= 5 && timer2 < 6){
+            melody.addSample("melody D2");
+            timer2 = 6;
+        }
+        if(timer2 >= 11 && timer2 < 12){
+            melody.addSample("melody F2");
+            melody.addSample("melody G3");
+            timer2 = 12;
+        }
+        if(timer2 >= 17 && timer2 < 18){
+            melody.addSample("melody A2");
+            melody.addSample("melody F3");
+            melody.addSample("melody G2");
+            timer2 = 12;
+        }
     }
 
 }
