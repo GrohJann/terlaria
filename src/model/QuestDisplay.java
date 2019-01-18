@@ -14,8 +14,12 @@ public class QuestDisplay extends GraphicalObject {
     public void draw(DrawTool drawTool){
         drawTool.setCurrentColor(255,255,255,255);
         drawTool.formatText("Comic Sans",1,30);
-        drawTool.drawText(x+20,y+30,"Current Quest: "+currentQuest.getTask());
-        drawTool.drawText(x+20,y+60,"Amount: "+currentQuest.getNumber());
+        if(currentQuest!=null) {
+            drawTool.drawText(x + 20, y + 30, "Current Quest: " + currentQuest.getTask());
+            drawTool.drawText(x + 20, y + 60, "Amount: " + currentQuest.getNumber());
+        }else{
+            drawTool.drawText(x+20,y+30,"All quests are done!");
+        }
     }
 
     public Quest getCurrentQuest() {
