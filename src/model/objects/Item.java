@@ -1,15 +1,18 @@
-package model;
+package model.objects;
 
 import akkgframework.model.fundamental.GraphicalObject;
+import java.awt.image.BufferedImage;
 
 public abstract class Item extends GraphicalObject {
 
-    private String name;
+    protected String name;
     private int amount;
+    private BufferedImage image;
 
-    public Item(String name, int amount){
+    public Item(String name, int amount, BufferedImage image){
         this.name = name;
         this.amount = amount;
+        this.image = image;
     }
 
     public String getName(){
@@ -21,10 +24,18 @@ public abstract class Item extends GraphicalObject {
     }
 
     public int getAmount(){
-       return amount;
+        return amount;
     }
 
     public void setAmount(int amount){
         this.amount = amount;
+    }
+
+    public BufferedImage getImage(){
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
     }
 }

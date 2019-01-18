@@ -4,10 +4,7 @@ import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
 import akkgframework.model.abitur.datenstrukturen.Queue;
-import model.Quest;
-import model.QuestDisplay;
-import model.Sound;
-import model.Terrain;
+import model.*;
 import model.textures.Background;
 import model.textures.entitys.Player;
 
@@ -31,6 +28,7 @@ public class ProgramController {
 
     private Terrain terrain;
     private Player player;
+    private Inventory inventory;
 
     /**
      * Konstruktor
@@ -58,6 +56,9 @@ public class ProgramController {
 
         player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
+
+        inventory = new Inventory(uiController);
+        uiController.registerObject(inventory);
 
         //soundCon.playSound("assets/sounds/HiHatLoopV1.wav");
 
