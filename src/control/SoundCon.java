@@ -19,7 +19,6 @@ public class SoundCon{
         melodySpeed = 1;
         melody.addSample("melody C3");
         melody.addSample("melody D3");
-        melody.playSample();
         timer = 0;
     }
 
@@ -38,22 +37,23 @@ public class SoundCon{
             loopPlays = true;
         }*/
 
-        if(timer2 >= 5 && timer2 < 6){
+        if(timer2 >= 10 && timer2 < 11){
             melody.addSample("melody D2");
-            timer2 = 6;
+            timer2 = 11;
             melodySpeed = 0.5;
         }
-        if(timer2 >= 11 && timer2 < 12){
+        if(timer2 >= 21 && timer2 < 22){
             melody.addSample("melody F2");
             melody.addSample("melody G3");
-            timer2 = 12;
+            timer2 = 22;
+            melody.randomize();
             melodySpeed = 1;
         }
-        if(timer2 >= 17 && timer2 < 18){
+        if(timer2 >= 32 && timer2 < 33){
             melody.addSample("melody A2");
             melody.addSample("melody F3");
             melody.addSample("melody G2");
-            timer2 = 12;
+            timer2 = 33;
             melodySpeed = 0.5;
         }
     }

@@ -27,7 +27,7 @@ public class MusicStack {
 
     public void playSample(){
         if(!sampleStack1.isEmpty() || !sampleStack2.isEmpty()) {
-            if (stack1to2) {
+            if (stack1to2 && !sampleStack1.isEmpty()) {
                 sampleStack1.top().play();
                 //System.out.println("1 - " + sampleStack1.top().getPath() + " - " + sampleStack1.top().toString());
                 sampleStack2.push(sampleStack1.top());
@@ -51,7 +51,26 @@ public class MusicStack {
         }
     }
 
-    public void update(double dt){
+    public void randomize(){
+        int length = countStack(sampleStack1) + countStack(sampleStack2);
+        Sound[] arr = new Sound[length];
+        //System.out.println(countStack(sampleStack1) +  countStack(sampleStack2));
+    }
 
+    private int countStack(Stack<Sound> stack){
+        int output = 0;
+        if(stack != null) {
+            Stack<Sound> tmp = new Stack<>();
+            while (!stack.isEmpty()) {
+                tmp.push(stack.top());
+                stack.pop();
+                output++;
+            }
+            while (!tmp.isEmpty()){
+                stack.push(tmp.top());
+                tmp.pop();
+            }
+        }
+        return output;
     }
 }
