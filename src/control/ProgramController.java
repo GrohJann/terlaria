@@ -6,6 +6,7 @@ import akkgframework.control.fundamental.SoundController;
 import akkgframework.model.abitur.datenstrukturen.Queue;
 import model.Quest;
 import model.QuestDisplay;
+import model.Sound;
 import model.Terrain;
 import model.textures.Background;
 import model.textures.entitys.Player;
@@ -58,10 +59,7 @@ public class ProgramController {
         player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
 
-        //uiController.drawObjectOnPanel(soundController, 0);
-        //soundController.loadSound("assets/sounds/HiHatLoopV1.wav", "HiHatLoopV1", true);
-        //soundController.playSound("HiHatLoopV1");
-        //soundCon.playClip(new File("assets/sounds/HiHatLoopV1.wav"));
+        //soundCon.playSound("assets/sounds/HiHatLoopV1.wav");
 
 
         createQuests();
@@ -118,6 +116,8 @@ public class ProgramController {
                 questDisplay.setCurrentQuest(quests.front());
             }
         }
+        soundCon.update(dt);
+
     }
 
     private void handlePlayerTerrainCollision(double dt){

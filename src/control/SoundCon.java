@@ -1,60 +1,57 @@
 package control;
 
+import model.MusicStack;
+import model.Sound;
+
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.IOException;
 
 public class SoundCon{
 
+    //Sound loop = new Sound("HiHatLoopV1.wav");
+    MusicStack melody = new MusicStack();
+    double timer;
+    double timer2;
+    boolean loopPlays = false;
 
+    public SoundCon(){
 
-    /*public static synchronized void playSound(final String url) {
-        new Thread(new Runnable() {
-            // The wrapper thread is unnecessary, unless it blocks on the
-            // Clip finishing; see comments.
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            MainProgram.class.getResourceAsStream("/assets/sounds/" + url));
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }*/
+        melody.addSample("melody C3");
+        melody.addSample("melody D3");
+        melody.playSample();
+        timer = 0;
+    }
 
-    public static void playClip(File clipFile) throws IOException,
-            UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
-        class AudioListener implements LineListener {
-            private boolean done = false;
-            @Override public synchronized void update(LineEvent event) {
-                LineEvent.Type eventType = event.getType();
-                if (eventType == LineEvent.Type.STOP || eventType == LineEvent.Type.CLOSE) {
-                    done = true;
-                    notifyAll();
-                }
-            }
-            public synchronized void waitUntilDone() throws InterruptedException {
-                while (!done) { wait(); }
-            }
+    public void update(double dt){
+        timer = timer + dt;
+        timer2 = timer2 + dt;
+
+        if(timer >= 1){
+            melody.playSample();
+            timer = 0;
         }
-        AudioListener listener = new AudioListener();
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(clipFile);
-        try {
-            Clip clip = AudioSystem.getClip();
-            clip.addLineListener(listener);
-            clip.open(audioInputStream);
-            try {
-                clip.start();
-                listener.waitUntilDone();
-            } finally {
-                clip.close();
-            }
-        } finally {
-            audioInputStream.close();
+
+        /*if(!loopPlays){
+            loop.play();
+            loop.loop();
+            loopPlays = true;
+        }*/
+
+        if(timer2 >= 5 && timer2 < 6){
+            melody.addSample("melody D2");
+            timer2 = 6;
+        }
+        if(timer2 >= 11 && timer2 < 12){
+            melody.addSample("melody F2");
+            melody.addSample("melody G3");
+            timer2 = 12;
+        }
+        if(timer2 >= 17 && timer2 < 18){
+            melody.addSample("melody A2");
+            melody.addSample("melody F3");
+            melody.addSample("melody G2");
+            timer2 = 12;
         }
     }
+
 }
