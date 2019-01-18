@@ -12,10 +12,11 @@ public class SoundCon{
     MusicStack melody = new MusicStack();
     double timer;
     double timer2;
+    double melodySpeed;
     boolean loopPlays = false;
 
     public SoundCon(){
-
+        melodySpeed = 1;
         melody.addSample("melody C3");
         melody.addSample("melody D3");
         melody.playSample();
@@ -26,7 +27,7 @@ public class SoundCon{
         timer = timer + dt;
         timer2 = timer2 + dt;
 
-        if(timer >= 1){
+        if(timer >= melodySpeed){
             melody.playSample();
             timer = 0;
         }
@@ -40,17 +41,20 @@ public class SoundCon{
         if(timer2 >= 5 && timer2 < 6){
             melody.addSample("melody D2");
             timer2 = 6;
+            melodySpeed = 0.5;
         }
         if(timer2 >= 11 && timer2 < 12){
             melody.addSample("melody F2");
             melody.addSample("melody G3");
             timer2 = 12;
+            melodySpeed = 1;
         }
         if(timer2 >= 17 && timer2 < 18){
             melody.addSample("melody A2");
             melody.addSample("melody F3");
             melody.addSample("melody G2");
             timer2 = 12;
+            melodySpeed = 0.5;
         }
     }
 
