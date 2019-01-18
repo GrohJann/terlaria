@@ -108,6 +108,7 @@ public class ProgramController {
     public void updateProgram(double dt){
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
+        System.out.println(dt);
         //handlePlayerTerrainCollision(dt);
         if(!quests.isEmpty()) {
             quests.front().check();
@@ -117,8 +118,6 @@ public class ProgramController {
                 questDisplay.setCurrentQuest(quests.front());
             }
         }
-        soundCon.update(dt);
-
     }
 
     private void handlePlayerTerrainCollision(double dt){

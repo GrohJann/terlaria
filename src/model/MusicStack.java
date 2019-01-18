@@ -37,7 +37,7 @@ public class MusicStack {
                     sampleStack1.push(sampleStack2.top());
                     sampleStack2.pop();
                 }
-            } else {
+            } else if(!stack1to2 && !sampleStack2.isEmpty()) {
                 sampleStack2.top().play();
                 //System.out.println("2 - " + sampleStack2.top().getPath() + " - " + sampleStack2.top().toString());
                 sampleStack1.push(sampleStack2.top());
