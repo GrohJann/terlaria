@@ -60,9 +60,6 @@ public class ProgramController {
         inventory = new Inventory(uiController);
         uiController.registerObject(inventory);
 
-        //soundCon.playSound("assets/sounds/HiHatLoopV1.wav");
-
-
         createQuests();
 
         questDisplay=new QuestDisplay(quests.front());
@@ -73,7 +70,7 @@ public class ProgramController {
         quests = new Queue<>();
         Quest newQuest = new Quest(player,"Go to the right", "x",1, 150,false);
         quests.enqueue(newQuest);
-        Quest newQuest1 = new Quest(player,"Spend time in the game", "time",10, 10,false);
+        Quest newQuest1 = new Quest(player,"Spend time in the game", "time",10, 10 ,false);
         quests.enqueue(newQuest1);
         Quest newQuest2 = new Quest(player,"Go to the left", "x",1, -900,false);
         quests.enqueue(newQuest2);
@@ -108,7 +105,7 @@ public class ProgramController {
     public void updateProgram(double dt){
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
-        System.out.println(dt);
+        soundCon.update(dt);
         //handlePlayerTerrainCollision(dt);
         if(!quests.isEmpty()) {
             quests.front().check();
@@ -116,6 +113,7 @@ public class ProgramController {
                 quests.dequeue();
                 player.setTime(0);
                 questDisplay.setCurrentQuest(quests.front());
+                soundCon.stage++;
             }
         }
     }

@@ -47,6 +47,10 @@ public class MusicStack {
                     sampleStack2.push(sampleStack1.top());
                     sampleStack1.pop();
                 }
+            } else if (!sampleStack1.isEmpty()){
+                stack1to2 = true;
+            } else if (!sampleStack2.isEmpty()){
+                stack1to2 = false;
             }
         }
     }
@@ -54,7 +58,37 @@ public class MusicStack {
     public void randomize(){
         int length = countStack(sampleStack1) + countStack(sampleStack2);
         Sound[] arr = new Sound[length];
-        //System.out.println(countStack(sampleStack1) +  countStack(sampleStack2));
+        for(int i = 0; i < arr.length; i++){
+            if(!sampleStack1.isEmpty()) {
+                arr[i] = sampleStack1.top();
+                sampleStack1.pop();
+            }else if(!sampleStack2.isEmpty()){
+                arr[i] = sampleStack2.top();
+                sampleStack2.pop();
+            }
+        }
+        /*System.out.println();
+        for(int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i].getPath() + " - ");
+        }
+        System.out.println();
+        System.out.println();*/
+        for (int i = 0; i < arr.length; i++) {
+            Sound tmp = arr[i];
+            int rand = (int) (Math.random() * arr.length);
+            arr[i] = arr[rand];
+            arr[rand] = tmp;
+        }
+        /*System.out.println();
+        for(int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i].getPath() + " - ");
+        }
+        System.out.println();
+        System.out.println();*/
+        for(int i = 0; i < arr.length; i++){
+            sampleStack1.push(arr[i]);
+        }
+        stack1to2 = true;
     }
 
     private int countStack(Stack<Sound> stack){
