@@ -12,6 +12,7 @@ import model.textures.Background;
 import model.textures.blocks.Grass;
 import model.textures.entitys.Player;
 
+import java.awt.event.KeyEvent;
 import java.io.File;
 
 /**
@@ -86,22 +87,21 @@ public class ProgramController {
         //handlePlayerTerrainCollision(dt);
         if (player.collidesWithLeft(grass)) {
             //player.setX(grass.getX() - player.getWidth());
-            System.out.println("collides left");
+            //System.out.println("collides left");
 
         }
         if (player.collidesWithRight(grass)) {
             //player.setX(grass.getX() + grass.getWidth());
-            System.out.println("collides right");
+            //System.out.println("collides right");
         }
         if (player.collidesWithBottom(grass)) {
             //player.setY(grass.getY() + grass.getHeight());
-            System.out.println("collides bottom");
+            //System.out.println("collides bottom");
         }
         if (!player.collidesWithTop(grass)) {
             player.addGravity(dt);
-            System.out.println("collides top");
+            //System.out.println("collides top");
         }
-
 
         soundCon.update(dt);
 
