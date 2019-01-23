@@ -2,18 +2,17 @@ package control;
 
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
-import akkgframework.control.fundamental.SoundController;
-import akkgframework.model.abitur.datenstrukturen.List;
 import akkgframework.model.abitur.datenstrukturen.Queue;
-import akkgframework.model.scenario.ScenarioController;
+import akkgframework.model.fundamental.GraphicalObject;
 import model.Inventory;
-import model.Player;
 import model.Quest;
 import model.QuestDisplay;
+import model.Terrain;
 import model.textures.Background;
-import model.textures.blocks.Dirt;
 import model.textures.blocks.Grass;
-import model.textures.blocks.Water;
+import model.textures.entitys.Player;
+
+import java.io.File;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -27,12 +26,15 @@ public class ProgramController {
     // Referenzen
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
-    private SoundController soundController;
-    private Player player;
-    private Inventory inventory;
+    private SoundCon soundCon;
     private Queue<Quest> quests;
     private QuestDisplay questDisplay;
 
+    private Terrain terrain;
+    private Player player;
+    private Inventory inventory;
+
+    private Grass grass;
 
     /**
      * Konstruktor
@@ -43,6 +45,10 @@ public class ProgramController {
      */
     public ProgramController(UIController uiController){
         this.uiController = uiController;
+        terrain = new Terrain();
+        soundCon = new SoundCon();
+        grass = new Grass(1000, 200);
+        player = new Player(uiController);
     }
 
     /**
@@ -54,21 +60,15 @@ public class ProgramController {
         Background background = new Background(0, 0);
         uiController.registerObject(background);
 
-        Grass grass = new Grass(0, 512);
+        //uiController.registerObject(terrain);
+
         uiController.registerObject(grass);
 
-        Dirt dirt = new Dirt(0,543);
-        uiController.registerObject(dirt);
 
-        Water water = new Water(100,100);
-        uiController.registerObject(water);
-
-        player = new Player(uiController);
-        uiController.drawObjectOnPanel(player,0);
+        uiController.registerObject(player);
 
         inventory = new Inventory(uiController);
         uiController.registerObject(inventory);
-
 
         createQuests();
 
@@ -83,30 +83,81 @@ public class ProgramController {
     public void updateProgram(double dt){
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
+        //handlePlayerTerrainCollision(dt);
+        if (player.collidesWithLeft(grass)) {
+            //player.setX(grass.getX() - player.getWidth());
+            System.out.println("collides left");
 
+        }
+        if (player.collidesWithRight(grass)) {
+            //player.setX(grass.getX() + grass.getWidth());
+            System.out.println("collides right");
+        }
+        if (player.collidesWithBottom(grass)) {
+            //player.setY(grass.getY() + grass.getHeight());
+            System.out.println("collides bottom");
+        }
+        if (!player.collidesWithTop(grass)) {
+            player.addGravity(dt);
+            System.out.println("collides top");
+        }
+
+
+        soundCon.update(dt);
+
+        if(!quests.isEmpty()) {
+            quests.front().check();
+            if (quests.front().isDone()) {
+                quests.dequeue();
+                player.setTime(0);
+                questDisplay.setCurrentQuest(quests.front());
+                soundCon.stage++;
+            }
+        }
     }
 
     private void createQuests(){
         quests = new Queue<>();
-        Quest newQuest = new Quest(player,"Go to the right", 1, false);
+        Quest newQuest = new Quest(player,"Go to the right", "x",1, 150,false);
         quests.enqueue(newQuest);
-        Quest newQuest1 = new Quest(player,"Jump", 3, false);
+        Quest newQuest1 = new Quest(player,"Spend time in the game", "time",10, 10 ,false);
         quests.enqueue(newQuest1);
-        Quest newQuest2 = new Quest(player,"Go to the left", 1, false);
+        Quest newQuest2 = new Quest(player,"Go to the left", "x",1, -900,false);
         quests.enqueue(newQuest2);
-        Quest newQuest3 = new Quest(player,"Jump", 5, false);
+        Quest newQuest3 = new Quest(player,"Go to the right", "x",1, 950,false);
         quests.enqueue(newQuest3);
-        Quest newQuest4 = new Quest(player,"Jump", 1, false);
+        Quest newQuest4 = new Quest(player,"Go to the left", "x",1,-560, false);
         quests.enqueue(newQuest4);
-        Quest newQuest5 = new Quest(player,"Exist", 1, false);
+        Quest newQuest5 = new Quest(player,"Spend time in the game", "time",60,60, false);
         quests.enqueue(newQuest5);
-        Quest newQuest6 = new Quest(player,"Exist", 1, false);
+        Quest newQuest6 = new Quest(player,"Go to the right", "x",1, 900,false);
         quests.enqueue(newQuest6);
-        Quest newQuest7 = new Quest(player,"Exist", 1, false);
+        Quest newQuest7 = new Quest(player,"Go to the left", "x",1, -150,false);
         quests.enqueue(newQuest7);
-        Quest newQuest8 = new Quest(player,"Exist", 1, false);
+        Quest newQuest8 = new Quest(player,"Go to the right", "x",1, 250,false);
         quests.enqueue(newQuest8);
-        Quest newQuest9 = new Quest(player,"Exist", 1, false);
+        Quest newQuest9 = new Quest(player,"Spend time in the game", "time",120, 120,false);
         quests.enqueue(newQuest9);
+        Quest newQuest10 = new Quest(player,"Go to the left", "x",1, -950,false);
+        quests.enqueue(newQuest10);
+        Quest newQuest11 = new Quest(player,"Go to the right", "x",1,560, false);
+        quests.enqueue(newQuest11);
+        Quest newQuest12 = new Quest(player,"Spend time in the game", "time",300,300, false);
+        quests.enqueue(newQuest12);
+        Quest newQuest13 = new Quest(player,"Go to the left", "x",1, -900,false);
+        quests.enqueue(newQuest13);
     }
+
+    private void handlePlayerTerrainCollision(double dt){
+        boolean collision = false;
+        GraphicalObject[][] terrainArray = terrain.getTerrain();
+        for (int i= 0; i < terrain.getTerrain().length; i++){
+            if (terrainArray[i][(int) (player.getX()) / 32].collidesWith(player))
+                collision = true;
+        }
+
+        if (!collision)
+            player.addGravity(dt);
+    }
+
 }

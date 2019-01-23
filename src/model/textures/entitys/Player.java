@@ -16,6 +16,7 @@ public class Player extends GraphicalObject {
 
     private int speed;
     private int image;
+    private double time;
     private double timer;
     private boolean lookingLeft;
     private boolean idle;
@@ -23,6 +24,11 @@ public class Player extends GraphicalObject {
     public Player(UIController uic) {
         this.tileset = new Tileset("assets/images/terraintiles/entity_player_01.gif", 32, 48);
         this.uic = uic;
+
+        setX(gd.getDisplayMode().getWidth() / 2);
+        setY(0);
+        setWidth(32);
+        setHeight(48);
 
         speed = 75;
         image = 0;
@@ -32,13 +38,13 @@ public class Player extends GraphicalObject {
     }
 
     public void draw(DrawTool drawTool) {
-        drawTool.drawImage(tileset.getTile(0, image), x + gd.getDisplayMode().getWidth() / 2, y);
+        drawTool.drawImage(tileset.getTile(0, image), x , y);
     }
 
     public void update(double dt) {
-        if (uic.isKeyDown(KeyEvent.VK_W)){
+        if (uic.isKeyDown(KeyEvent.VK_W)) {
             y -= 10;
-        }else if (uic.isKeyDown(KeyEvent.VK_SPACE)) {
+        } else if (uic.isKeyDown(KeyEvent.VK_SPACE)) {
             y -= 20;
         }
         if (uic.isKeyDown(KeyEvent.VK_A)) {
@@ -52,17 +58,14 @@ public class Player extends GraphicalObject {
         } else {
             idle = true;
         }
-        /*if(!collision) {
-            y = y + speed * dt;
-        }*/
 
         /*
          * animation
          */
-        timer = timer + dt*2;
+        timer = timer + dt * 2;
 
-        if (lookingLeft) {
-            if (!idle) {
+        if (!idle) {
+            if (lookingLeft) {
                 if (timer >= 0 && timer <= 0.5) {
                     image = 0;
                 }
@@ -113,11 +116,6 @@ public class Player extends GraphicalObject {
                     timer = 0;
                 }
             } else {
-                image = 0;
-            }
-        }
-        if (!lookingLeft){
-            if (!idle) {
                 if (timer >= 0 && timer <= 0.5) {
                     image = 14;
                 }
@@ -133,15 +131,103 @@ public class Player extends GraphicalObject {
                     image = 17;
                     timer = 0;
                 }
-            } else {
-                image = 14;
             }
         }
+        time+=dt;
     }
 
+    public int getTask(String task){
+        if(task.equalsIgnoreCase("y")){
+            return (int)y;
+        }
+        if(task.equalsIgnoreCase("x")) {
+            return (int) x;
+        }
+        if(task.equalsIgnoreCase("time")) {
+            return (int) time;
+        }
+        return 0;
+    }
 
-    public void addGravity(double dt){
+    public void addGravity(double dt) {
         y += speed * dt;
+    }
+    
+    
+    /**
+     * unnötige getter und setter
+     */
+
+    public Tileset getTileset() {
+        return tileset;
+    }
+
+    public void setTileset(Tileset tileset) {
+        this.tileset = tileset;
+    }
+
+    public UIController getUic() {
+        return uic;
+    }
+
+    public void setUic(UIController uic) {
+        this.uic = uic;
+    }
+
+    public GraphicsDevice getGd() {
+        return gd;
+    }
+
+    public void setGd(GraphicsDevice gd) {
+        this.gd = gd;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public double getTime() {
+        return time;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
+    }
+
+    public double getTimer() {
+        return timer;
+    }
+
+    public void setTimer(double timer) {
+        this.timer = timer;
+    }
+
+    public boolean isLookingLeft() {
+        return lookingLeft;
+    }
+
+    public void setLookingLeft(boolean lookingLeft) {
+        this.lookingLeft = lookingLeft;
+    }
+
+    public boolean isIdle() {
+        return idle;
+    }
+
+    public void setIdle(boolean idle) {
+        this.idle = idle;
     }
 }
 

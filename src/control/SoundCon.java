@@ -1,60 +1,86 @@
 package control;
 
-import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
+import model.MusicStack;
+import model.Sound;
+
 
 public class SoundCon{
 
+    //Sound loop = new Sound("HiHatLoopV1.wav");
+    private MusicStack melody = new MusicStack();
+    private MusicStack bass = new MusicStack();
+    private double timer;
+    private double timer2;
+    private double melodySpeed;
+    private double bassSpeed;
+    int stage;
+    private boolean randomizeMelody;
+    //boolean loopPlays = false;
 
+    public SoundCon(){
+        melodySpeed = 1;
+        bassSpeed = 4;
+        melody.addSample("melody C3");
+        melody.addSample("melody D3");
+        timer = 0;
+        stage = 0;
+        randomizeMelody = false;
+    }
 
-    /*public static synchronized void playSound(final String url) {
-        new Thread(new Runnable() {
-            // The wrapper thread is unnecessary, unless it blocks on the
-            // Clip finishing; see comments.
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            MainProgram.class.getResourceAsStream("/assets/sounds/" + url));
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }*/
+    public void update(double dt){
+        timer = timer + dt;
+        timer2 = timer2 + dt;
 
-    public static void playClip(File clipFile) throws IOException,
-            UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
-        class AudioListener implements LineListener {
-            private boolean done = false;
-            @Override public synchronized void update(LineEvent event) {
-                LineEvent.Type eventType = event.getType();
-                if (eventType == LineEvent.Type.STOP || eventType == LineEvent.Type.CLOSE) {
-                    done = true;
-                    notifyAll();
-                }
-            }
-            public synchronized void waitUntilDone() throws InterruptedException {
-                while (!done) { wait(); }
-            }
+        if(timer >= melodySpeed){
+            melody.playSample();
+            timer = 0;
         }
-        AudioListener listener = new AudioListener();
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(clipFile);
-        try {
-            Clip clip = AudioSystem.getClip();
-            clip.addLineListener(listener);
-            clip.open(audioInputStream);
-            try {
-                clip.start();
-                listener.waitUntilDone();
-            } finally {
-                clip.close();
-            }
-        } finally {
-            audioInputStream.close();
+
+        if(timer2 >= bassSpeed){
+            bass.playSample();
+            timer2 = 0;
+        }
+        /*if(!loopPlays){
+            loop.play();
+            loop.loop();
+            loopPlays = true;
+        }*/
+
+        if(stage == 1){
+            melody.addSample("melody D2");
+            stage++;
+        }
+        if(stage == 3){
+            melody.addSample("melody F2");
+            melody.addSample("melody G2");
+            bass.addSample("bass D3");
+            bass.addSample("bass G2");
+            stage++;
+        }
+        if(stage == 5){
+            melody.addSample("melody A2");
+            melody.addSample("melody F3");
+            bass.addSample("bass C3");
+            stage++;
+        }
+        if(stage == 7){
+            melody.addSample("melody G3");
+            melodySpeed = 0.5;
+            bass.addSample("bass F2");
+            stage++;
+        }
+        if(stage == 9){
+            bass.addSample("bass F3");
+            bass.addSample("bass D2");
+            melody.randomize();
+            stage++;
+        }
+        if(stage == 11){
+            bass.addSample("bass G3");
+            bass.addSample("bass A2");
+            melody.randomize();
+            stage++;
         }
     }
+
 }

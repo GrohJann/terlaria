@@ -140,7 +140,7 @@ public abstract class GraphicalObject implements DrawableObject {
     public void mouseWheelMoved(MouseWheelEvent e){
 
     }
-
+    
     /**
      * Überprüft, ob das übergebene Objekt mit diesem GraphicalObject kollidiert (Rechteckkollision). Dabei werden die Koordinaten und
      * die Breite und Höhe des Objekts berücksichtigt.
@@ -150,6 +150,47 @@ public abstract class GraphicalObject implements DrawableObject {
     public boolean collidesWith(GraphicalObject gO){
         if ( x < gO.getX()+gO.getWidth() && x + width > gO.getX() && y < gO.getY() + gO.getHeight() && y + height > gO.getY() ) return true;
         return false;
+        //return getX()<gO.getX()+gO.getWidth() && getX()+getWidth()>gO.getX() && getY()<gO.getY()+gO.getHeight() && getY()+getHeight()>gO.getY();
+    }
+    
+    /**
+     * Überprüft, ob das übergebene Objekt mit diesem GraphicalObject am oberen Rand kollidiert (Rechteckkollision). Dabei werden die Koordinaten und
+     * die Breite und Höhe des Objekts berücksichtigt.
+     * @param gO Das Objekt, das auf Kollision überprüft wird
+     * @return True, falls eine Kollision besteht, sonst false.
+     */
+    public boolean collidesWithTop(GraphicalObject gO){
+        return getX()<gO.getX()+gO.getWidth() && getX()+getWidth()>gO.getX() && getY()+getHeight()>gO.getY();
+    }
+    
+    /**
+     * Überprüft, ob das übergebene Objekt mit diesem GraphicalObject am unteren Rand kollidiert (Rechteckkollision). Dabei werden die Koordinaten und
+     * die Breite und Höhe des Objekts berücksichtigt.
+     * @param gO Das Objekt, das auf Kollision überprüft wird
+     * @return True, falls eine Kollision besteht, sonst false.
+     */
+    public boolean collidesWithBottom(GraphicalObject gO){
+        return getX()<gO.getX()+gO.getWidth() && getX()+getWidth()>gO.getX() && getY()+getHeight()<gO.getY()+gO.getHeight();
+    }
+    
+    /**
+     * Überprüft, ob das übergebene Objekt mit diesem GraphicalObject am linken Rand kollidiert (Rechteckkollision). Dabei werden die Koordinaten und
+     * die Breite und Höhe des Objekts berücksichtigt.
+     * @param gO Das Objekt, das auf Kollision überprüft wird
+     * @return True, falls eine Kollision besteht, sonst false.
+     */
+    public boolean collidesWithLeft(GraphicalObject gO){
+        return  getX()+getWidth()>gO.getX() && getY()<gO.getY()+gO.getHeight() && getY()+getHeight()>gO.getY();
+    }
+    
+    /**
+     * Überprüft, ob das übergebene Objekt mit diesem GraphicalObject am rechten Rand kollidiert (Rechteckkollision). Dabei werden die Koordinaten und
+     * die Breite und Höhe des Objekts berücksichtigt.
+     * @param gO Das Objekt, das auf Kollision überprüft wird
+     * @return True, falls eine Kollision besteht, sonst false.
+     */
+    public boolean collidesWithRight(GraphicalObject gO){
+        return getX()<gO.getX()+gO.getWidth() && getY()<gO.getY()+gO.getHeight() && getY()+getHeight()>gO.getY();
     }
 
     /**
