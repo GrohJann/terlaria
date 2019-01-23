@@ -136,12 +136,16 @@ public class Player extends GraphicalObject {
         time+=dt;
     }
 
-    public int getTask(String task){
+    public int getTask(String task,String direction){
         if(task.equalsIgnoreCase("y")){
             return (int)y;
         }
         if(task.equalsIgnoreCase("x")) {
-            return (int) x;
+            if(direction.equalsIgnoreCase("left")){
+                return (int) x*-1;
+            }else{
+                return (int) x;
+            }
         }
         if(task.equalsIgnoreCase("time")) {
             return (int) time;

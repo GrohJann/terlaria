@@ -12,28 +12,26 @@ public class Quest {
 
     private String task;
     private String command;
+    private String direction;
     private Player player;
 
-    public Quest(Player player, String task, String command, int number, int commandNumber, boolean done) {
+    public Quest(Player player, String task, String command, int number, int commandNumber, String direction, boolean done) {
         this.player = player;
-        fillQuests(task, command, number, commandNumber, done);
+        fillQuests(task, command, number, commandNumber, direction, done);
     }
 
-    public void fillQuests(String task, String command, int number, int commandNumber, boolean done) {
+    public void fillQuests(String task, String command, int number, int commandNumber, String direction, boolean done) {
         this.task = task;
         this.command = command;
         this.number = number;
         this.commandNumber = commandNumber;
+        this.direction=direction;
         this.done = done;
     }
 
     public void check() {
         if (commandNumber > 1) {
-            if (player.getTask(command) > commandNumber) {
-                setDone(true);
-            }
-        } else {
-            if (player.getTask(command) < commandNumber) {
+            if (player.getTask(command, direction) > commandNumber) {
                 setDone(true);
             }
         }
