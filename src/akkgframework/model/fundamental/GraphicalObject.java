@@ -21,6 +21,7 @@ public abstract class GraphicalObject implements DrawableObject {
     // Attribute: um Konstruktoraufrufzwang zu vermeiden wurden hier AUSNAHMSWEISE Startwerte gesetzt
     protected double x = 0, y = 0; // Die Koordinaten des Objekts
     protected double width = 1, height = 1; // Die rechteckige Ausdehnung des Objekts, wobei x/y die obere, linke Ecke angeben
+    protected String type;
 
     // Referenzen
     private BufferedImage myImage;
@@ -211,6 +212,10 @@ public abstract class GraphicalObject implements DrawableObject {
 
     // Sondierende Methoden: "getter"
 
+    public String getType() {
+        return type;
+    }
+
     public double getX() {
         return x;
     }
@@ -232,6 +237,10 @@ public abstract class GraphicalObject implements DrawableObject {
     }
 
     // Manipulierende Methoden: "setter"
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public void setX(double x) {
         this.x = x;

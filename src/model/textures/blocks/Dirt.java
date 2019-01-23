@@ -10,7 +10,7 @@ public class Dirt extends GraphicalObject {
         y = posY;
         width = 32;
         height = 32;
-
+        setType("dirt");
         this.createAndSetNewImage("assets/images/terraintiles/block_dirt.gif");
     }
 
