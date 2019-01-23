@@ -16,14 +16,23 @@ public class Inventory extends GraphicalObject {
     private UIController uic;
 
     public Inventory(UIController uic){
-        items = new List<>();
-        places = 5;
-        actual = 1;
+        this.items = new List<>();
+        this.places = 5;
+        this.actual = 1;
         this.uic = uic;
     }
 
     public void draw(DrawTool drawTool){
-
+        for(int i = 0; i < places; i++){
+            drawTool.drawRectangle(1500,50 + 50 * i,50,50);
+            if(places < usedPlaces){
+                items.toFirst();
+                for(int j = i; j > 0; j--){
+                    drawTool.drawImage(items.getContent().getImage(), 1500, 50 + 50 * i);
+                }
+                toActual();
+            }
+        }
     }
 
     /*

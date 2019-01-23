@@ -3,17 +3,17 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.control.fundamental.SoundController;
+import akkgframework.model.abitur.datenstrukturen.List;
 import akkgframework.model.abitur.datenstrukturen.Queue;
 import akkgframework.model.scenario.ScenarioController;
 import model.Inventory;
 import model.Player;
 import model.Quest;
 import model.QuestDisplay;
-import model.Terrain;
 import model.textures.Background;
-import model.textures.entitys.Player;
-
-import java.io.File;
+import model.textures.blocks.Dirt;
+import model.textures.blocks.Grass;
+import model.textures.blocks.Water;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -27,14 +27,12 @@ public class ProgramController {
     // Referenzen
     private UIController uiController;  // diese Referenz soll auf ein Objekt der Klasse uiController zeigen. Über dieses Objekt wird das Fenster gesteuert.
     private Display programmZeitAnzeige;
-    private SoundCon soundCon;
+    private SoundController soundController;
     private Player player;
     private Inventory inventory;
     private Queue<Quest> quests;
     private QuestDisplay questDisplay;
 
-    private Terrain terrain;
-    private Player player;
 
     /**
      * Konstruktor
@@ -45,7 +43,6 @@ public class ProgramController {
      */
     public ProgramController(UIController uiController){
         this.uiController = uiController;
-        soundCon = new SoundCon();
     }
 
     /**
@@ -57,8 +54,14 @@ public class ProgramController {
         Background background = new Background(0, 0);
         uiController.registerObject(background);
 
-        terrain = new Terrain();
-        uiController.registerObject(terrain);
+        Grass grass = new Grass(0, 512);
+        uiController.registerObject(grass);
+
+        Dirt dirt = new Dirt(0,543);
+        uiController.registerObject(dirt);
+
+        Water water = new Water(100,100);
+        uiController.registerObject(water);
 
         player = new Player(uiController);
         uiController.drawObjectOnPanel(player,0);
@@ -66,10 +69,21 @@ public class ProgramController {
         inventory = new Inventory(uiController);
         uiController.registerObject(inventory);
 
+
         createQuests();
 
         questDisplay=new QuestDisplay(quests.front());
         uiController.drawObjectOnPanel(questDisplay,0);
+    }
+
+    /**
+     * Diese Methode wird wiederholt automatisch aufgerufen und zwar für jede Frame einmal, d.h. über 25 mal pro Sekunde.
+     * @param dt Die Zeit in Sekunden, die seit dem letzten Aufruf der Methode vergangen ist.
+     */
+    public void updateProgram(double dt){
+        programTimer += dt;
+        // ******************************************* Ab hier euer eigener Code! *******************************************
+
     }
 
     private void createQuests(){
@@ -95,26 +109,4 @@ public class ProgramController {
         Quest newQuest9 = new Quest(player,"Exist", 1, false);
         quests.enqueue(newQuest9);
     }
-
-    /**
-     * Diese Methode wird wiederholt automatisch aufgerufen und zwar für jede Frame einmal, d.h. über 25 mal pro Sekunde.
-     * @param dt Die Zeit in Sekunden, die seit dem letzten Aufruf der Methode vergangen ist.
-     */
-    public void updateProgram(double dt){
-        programTimer += dt;
-        // ******************************************* Ab hier euer eigener Code! *******************************************
-        //handlePlayerTerrainCollision(dt);
-    }
-
-    private void handlePlayerTerrainCollision(double dt){
-        boolean collision = false;
-        for (int i= 0; i < terrain.getTerrain().length; i++){
-            if (terrain.getTerrain()[i][(int) (player.getX()) / 32].collidesWith(player))
-                collision = true;
-        }
-
-        if (!collision)
-            player.addGravity(dt);
-    }
-
 }
