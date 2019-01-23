@@ -7,11 +7,12 @@ package control;
 public class Config {
 
     // Titel des Programms (steht oben in der Fenstertitelzeile)
-    public final static String WINDOW_TITLE = "Vorlage des grafischen Frameworks mit Einstiegsklasse";
+    public final static String WINDOW_TITLE = "Terlaria";
 
     // Breite des Programmfensters (Width) und Höhe des Programmfensters (Height)
-    public final static int WINDOW_WIDTH = 1600;
-    public final static int WINDOW_HEIGHT = 1024;   // Effektive Höhe ist etwa 29 Pixel geringer (Titelleiste wird mitgezählt)
+    public final static int WINDOW_WIDTH = 1920;
+    public final static int WINDOW_HEIGHT = 1056;   // Effektive Höhe ist etwa 29 Pixel geringer (Titelleiste wird mitgezählt)
+
 
     // Schaltet die Infomeldungen des Frameworks an oder aus
     public final static boolean INFO_MESSAGES = true;

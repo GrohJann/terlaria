@@ -2,10 +2,14 @@ package control;
 
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
-import akkgframework.control.fundamental.SoundController;
 import akkgframework.model.abitur.datenstrukturen.Queue;
-import model.*;
+import akkgframework.model.fundamental.GraphicalObject;
+import model.Inventory;
+import model.Quest;
+import model.QuestDisplay;
+import model.Terrain;
 import model.textures.Background;
+import model.textures.blocks.Grass;
 import model.textures.entitys.Player;
 
 import java.io.File;
@@ -30,6 +34,8 @@ public class ProgramController {
     private Player player;
     private Inventory inventory;
 
+    private Grass grass;
+
     /**
      * Konstruktor
      * Dieser legt das Objekt der Klasse ProgramController an, das den Programmfluss steuert.
@@ -39,7 +45,10 @@ public class ProgramController {
      */
     public ProgramController(UIController uiController){
         this.uiController = uiController;
+        terrain = new Terrain();
         soundCon = new SoundCon();
+        grass = new Grass(1000, 200);
+        player = new Player(uiController);
     }
 
     /**
@@ -51,11 +60,12 @@ public class ProgramController {
         Background background = new Background(0, 0);
         uiController.registerObject(background);
 
-        terrain = new Terrain();
-        uiController.registerObject(terrain);
+        //uiController.registerObject(terrain);
 
-        player = new Player(uiController);
-        uiController.drawObjectOnPanel(player,0);
+        uiController.registerObject(grass);
+
+
+        uiController.registerObject(player);
 
         inventory = new Inventory(uiController);
         uiController.registerObject(inventory);
@@ -64,6 +74,46 @@ public class ProgramController {
 
         questDisplay=new QuestDisplay(quests.front());
         uiController.drawObjectOnPanel(questDisplay,0);
+    }
+
+    /**
+     * Diese Methode wird wiederholt automatisch aufgerufen und zwar für jede Frame einmal, d.h. über 25 mal pro Sekunde.
+     * @param dt Die Zeit in Sekunden, die seit dem letzten Aufruf der Methode vergangen ist.
+     */
+    public void updateProgram(double dt){
+        programTimer += dt;
+        // ******************************************* Ab hier euer eigener Code! *******************************************
+        //handlePlayerTerrainCollision(dt);
+        if (player.collidesWithLeft(grass)) {
+            //player.setX(grass.getX() - player.getWidth());
+            System.out.println("collides left");
+
+        }
+        if (player.collidesWithRight(grass)) {
+            //player.setX(grass.getX() + grass.getWidth());
+            System.out.println("collides right");
+        }
+        if (player.collidesWithBottom(grass)) {
+            //player.setY(grass.getY() + grass.getHeight());
+            System.out.println("collides bottom");
+        }
+        if (!player.collidesWithTop(grass)) {
+            player.addGravity(dt);
+            System.out.println("collides top");
+        }
+
+
+        soundCon.update(dt);
+
+        if(!quests.isEmpty()) {
+            quests.front().check();
+            if (quests.front().isDone()) {
+                quests.dequeue();
+                player.setTime(0);
+                questDisplay.setCurrentQuest(quests.front());
+                soundCon.stage++;
+            }
+        }
     }
 
     private void createQuests(){
@@ -98,30 +148,11 @@ public class ProgramController {
         quests.enqueue(newQuest13);
     }
 
-    /**
-     * Diese Methode wird wiederholt automatisch aufgerufen und zwar für jede Frame einmal, d.h. über 25 mal pro Sekunde.
-     * @param dt Die Zeit in Sekunden, die seit dem letzten Aufruf der Methode vergangen ist.
-     */
-    public void updateProgram(double dt){
-        programTimer += dt;
-        // ******************************************* Ab hier euer eigener Code! *******************************************
-        soundCon.update(dt);
-        //handlePlayerTerrainCollision(dt);
-        if(!quests.isEmpty()) {
-            quests.front().check();
-            if (quests.front().isDone()) {
-                quests.dequeue();
-                player.setTime(0);
-                questDisplay.setCurrentQuest(quests.front());
-                soundCon.stage++;
-            }
-        }
-    }
-
     private void handlePlayerTerrainCollision(double dt){
         boolean collision = false;
+        GraphicalObject[][] terrainArray = terrain.getTerrain();
         for (int i= 0; i < terrain.getTerrain().length; i++){
-            if (terrain.getTerrain()[i][(int) (player.getX()) / 32].collidesWith(player))
+            if (terrainArray[i][(int) (player.getX()) / 32].collidesWith(player))
                 collision = true;
         }
 
