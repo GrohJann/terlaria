@@ -4,6 +4,8 @@ import akkgframework.control.fundamental.UIController;
 import akkgframework.model.abitur.datenstrukturen.List;
 import akkgframework.model.fundamental.GraphicalObject;
 import akkgframework.view.DrawTool;
+import model.objects.Item;
+
 import java.awt.event.MouseWheelEvent;
 
 
@@ -24,7 +26,7 @@ public class Inventory extends GraphicalObject {
 
     public void draw(DrawTool drawTool){
         for(int i = 0; i < places; i++){
-            drawTool.drawRectangle(1500,50 + 50 * i,50,50);
+            drawTool.drawRectangle(1800,50 + 50 * i,50,50);
             if(places < usedPlaces){
                 items.toFirst();
                 for(int j = i; j > 0; j--){

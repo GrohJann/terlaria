@@ -1,19 +1,22 @@
 package model.objects;
 
-import akkgframework.view.DrawTool;
+import akkgframework.control.fundamental.UIController;
+import java.awt.event.KeyEvent;
 
-import java.awt.image.BufferedImage;
 
 public class Shovel extends Item {
 
 
-
-    public Shovel(BufferedImage image){
-        this.setName("shovel");
-        this.setAmount(1);
+    public Shovel(String name, int amount){
+        super(name, amount);
+        this.setImage(createNewImage("assets/images/barel.png"));
     }
 
-    public void draw(DrawTool drawTool){
-        setMyImage("assets/images/tree.png");
-    }
+    /*
+     *   public void use(UIController uic){
+     *     if(uic.isKeyDown(KeyEvent.VK_E)){
+     *
+     *     }
+     *   }
+     */
 }
