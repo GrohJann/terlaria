@@ -17,7 +17,7 @@ public class Water extends GraphicalObject {
         height = 32;
         image = 0;
         timer = 0;
-        setType("water");
+        setKind("water");
          tileset = new Tileset("assets/images/terraintiles/animation_block_water.gif", 32, 32);
     }
 

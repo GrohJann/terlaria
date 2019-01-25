@@ -18,7 +18,7 @@ public class Shovel extends Item {
     public void use(UIController uic, Player player, Terrain terrain){
         if(uic.isKeyDown(KeyEvent.VK_E)){
             for(int i= 0; i < terrain.getTerrain().length; i++) {
-                if (player.collidesWithBottom(terrain.getTerrain()[i][(int)(player.getX() / 32)]) && (terrain.getTerrain()[i][(int)(player.getX() / 32)].getType() == "grass" || terrain.getTerrain()[i][(int)(player.getX() / 32)].getType() == "dirt")){
+                if (player.collidesWithBottom(terrain.getTerrain()[i][(int)(player.getX() / 32)]) && (terrain.getTerrain()[i][(int)(player.getX() / 32)].getKind() == "grass" || terrain.getTerrain()[i][(int)(player.getX() / 32)].getKind() == "dirt")){
                     terrain.getTerrain()[i][(int)(player.getX() / 32)] = null;
                 }
             }

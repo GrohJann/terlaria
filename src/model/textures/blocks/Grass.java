@@ -14,7 +14,7 @@ public class Grass extends GraphicalObject {
         setY(posY);
         setWidth(32);
         setHeight(32);
-        setType("grass");
+        setKind("grass");
         
         this.createAndSetNewImage("assets/images/terraintiles/block_grass.gif");
     }
