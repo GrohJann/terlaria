@@ -8,6 +8,8 @@ import model.Inventory;
 import model.Quest;
 import model.QuestDisplay;
 import model.Terrain;
+import model.objects.ItemDirt;
+import model.objects.Shovel;
 import model.textures.Background;
 import model.textures.blocks.Grass;
 import model.textures.entitys.Player;
@@ -112,39 +114,46 @@ public class ProgramController {
                 player.setTime(0);
                 questDisplay.setCurrentQuest(quests.front());
                 soundCon.stage++;
+                if (quests.front().isReward()){
+                    if(inventory.searchItem("Shovel") == -1){
+                        inventory.addItem(new Shovel("Shovel",1));
+                    }else {
+                        inventory.addItem(new ItemDirt("Dirt",1));
+                    }
+                }
             }
         }
     }
 
     private void createQuests(){
         quests = new Queue<>();
-        Quest newQuest = new Quest(player,"Go to the right", "x",1, 1590,"right",false);
+        Quest newQuest = new Quest(player,"Go to the right", "x",1, 1590,"right",false,true);
         quests.enqueue(newQuest);
-        Quest newQuest1 = new Quest(player,"Spend time in the game", "time",10, 10 ,"",false);
+        Quest newQuest1 = new Quest(player,"Spend time in the game", "time",10, 10 ,"",false,false);
         quests.enqueue(newQuest1);
-        Quest newQuest2 = new Quest(player,"Go to the left", "x",1, 150,"left",false);
+        Quest newQuest2 = new Quest(player,"Go to the left", "x",1, 150,"left",false,true);
         quests.enqueue(newQuest2);
-        Quest newQuest3 = new Quest(player,"Go to the right", "x",1, 1850,"right",false);
+        Quest newQuest3 = new Quest(player,"Go to the right", "x",1, 1850,"right",false,false);
         quests.enqueue(newQuest3);
-        Quest newQuest4 = new Quest(player,"Go to the left", "x",1,200, "left",false);
+        Quest newQuest4 = new Quest(player,"Go to the left", "x",1,200, "left",false,false);
         quests.enqueue(newQuest4);
-        Quest newQuest5 = new Quest(player,"Spend time in the game", "time",60,60, "",false);
+        Quest newQuest5 = new Quest(player,"Spend time in the game", "time",60,60, "",false,false);
         quests.enqueue(newQuest5);
-        Quest newQuest6 = new Quest(player,"Go to the right", "x",1, 1200,"right",false);
+        Quest newQuest6 = new Quest(player,"Go to the right", "x",1, 1200,"right",false,false);
         quests.enqueue(newQuest6);
-        Quest newQuest7 = new Quest(player,"Go to the left", "x",1, 150,"left",false);
+        Quest newQuest7 = new Quest(player,"Go to the left", "x",1, 150,"left",false,false);
         quests.enqueue(newQuest7);
-        Quest newQuest8 = new Quest(player,"Go to the right", "x",1, 1500,"right",false);
+        Quest newQuest8 = new Quest(player,"Go to the right", "x",1, 1500,"right",false,false);
         quests.enqueue(newQuest8);
-        Quest newQuest9 = new Quest(player,"Spend time in the game", "time",120, 120,"",false);
+        Quest newQuest9 = new Quest(player,"Spend time in the game", "time",120, 120,"",false,false);
         quests.enqueue(newQuest9);
-        Quest newQuest10 = new Quest(player,"Go to the left", "x",1, 250,"left",false);
+        Quest newQuest10 = new Quest(player,"Go to the left", "x",1, 250,"left",false,false);
         quests.enqueue(newQuest10);
-        Quest newQuest11 = new Quest(player,"Go to the right", "x",1,1560,"right",false);
+        Quest newQuest11 = new Quest(player,"Go to the right", "x",1,1560,"right",false,false);
         quests.enqueue(newQuest11);
-        Quest newQuest12 = new Quest(player,"Spend time in the game", "time",300,300, "",false);
+        Quest newQuest12 = new Quest(player,"Spend time in the game", "time",300,300, "",false,false);
         quests.enqueue(newQuest12);
-        Quest newQuest13 = new Quest(player,"Go to the left", "x",1, 150,"left",false);
+        Quest newQuest13 = new Quest(player,"Go to the left", "x",1, 150,"left",false,false);
         quests.enqueue(newQuest13);
     }
 

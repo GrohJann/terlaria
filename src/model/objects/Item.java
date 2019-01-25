@@ -1,6 +1,11 @@
 package model.objects;
 
+import akkgframework.control.fundamental.UIController;
 import akkgframework.model.fundamental.GraphicalObject;
+import model.Inventory;
+import model.Terrain;
+import model.textures.entitys.Player;
+
 import java.awt.image.BufferedImage;
 
 public abstract class Item extends GraphicalObject {
@@ -12,6 +17,10 @@ public abstract class Item extends GraphicalObject {
     public Item(String name, int amount){
         this.name = name;
         this.amount = amount;
+    }
+
+    protected void use(UIController uic, Player player, Terrain terrain, Inventory inventory){
+
     }
 
     public String getName(){
