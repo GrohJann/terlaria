@@ -12,6 +12,7 @@ import java.awt.event.MouseWheelEvent;
 public class Inventory extends GraphicalObject {
 
     private List<Item> items;
+    private List<Item> drawedItems;
     private int places;
     private int usedPlaces;
     private int actual;
@@ -19,21 +20,21 @@ public class Inventory extends GraphicalObject {
 
     public Inventory(UIController uic){
         this.items = new List<>();
+        this.drawedItems = new List<>();
         this.places = 5;
         this.actual = 1;
         this.uic = uic;
     }
 
     public void draw(DrawTool drawTool){
+        drawedItems.toFirst();
         for(int i = 0; i < places; i++){
             drawTool.drawRectangle(1800,50 + 50 * i,50,50);
-            if(places < usedPlaces){
-                items.toFirst();
-                for(int j = i; j > 0; j--){
-                    drawTool.drawImage(items.getContent().getImage(), 1500, 50 + 50 * i);
-                }
-                toActual();
+            if(!drawedItems.isEmpty() && i < usedPlaces) {
+                drawTool.drawImage(drawedItems.getContent().getImage(), 1810, 60 + 50 * i);
+                //System.out.println("Item gezeichnet: " + i);
             }
+            drawedItems.next();
         }
     }
 
@@ -46,14 +47,20 @@ public class Inventory extends GraphicalObject {
         int temp = searchItem(added.getName());
         if(temp >= 0){
             items.toFirst();
+            drawedItems.toFirst();
             for(int i = temp; i > 0; i--){
                 items.next();
+                drawedItems.next();
             }
             items.getContent().setAmount(items.getContent().getAmount() + 1);
+            drawedItems.getContent().setAmount(items.getContent().getAmount() + 1);
             toActual();
+            //System.out.println("Item vermehrt: " + temp);
         }else if(usedPlaces < places){
             items.append(added);
+            drawedItems.append(added);
             usedPlaces ++;
+            //System.out.println("Item hinzugefügt: " + usedPlaces + "/" + places);
         }
     }
 
@@ -65,9 +72,19 @@ public class Inventory extends GraphicalObject {
         Item dropped = items.getContent();
         if(items.getContent().getAmount() == 1) {
             items.remove();
+            drawedItems.toFirst();
+            for(int i = actual; i > 0; i--){
+                drawedItems.next();
+            }
+            drawedItems.remove();
             usedPlaces--;
         }else{
             items.getContent().setAmount(items.getContent().getAmount() - 1);
+            drawedItems.toFirst();
+            for(int i = actual; i > 0; i--){
+                drawedItems.next();
+            }
+            drawedItems.getContent().setAmount(items.getContent().getAmount() - 1);
         }
         return dropped;
     }
@@ -107,7 +124,7 @@ public class Inventory extends GraphicalObject {
      * Gibt den Platz in der list zurück, in der sich das Item befindet.
      * Falls das Item nicht vorhanden ist, wird -1 zurückgegeben wird.
      */
-    private int searchItem(String name){
+    public int searchItem(String name){
         int output = -1;
         items.toFirst();
         for(int i = 0; i < places && output >= 0; i++){

@@ -12,12 +12,19 @@ public class MusicStack {
     private Stack<Sound> sampleStack1;
     private Stack<Sound> sampleStack2;
 
+    //Konstruktor
     public MusicStack(){
+        //Initialisierung der beiden Stacks
         sampleStack1 = new Stack<>();
         sampleStack2 = new Stack<>();
+        //Initialisierung der Variable, welche bestimmt von welchem Stack die Samples genommen und auf welchen sie gelegt werden.
         stack1to2 = true;
     }
 
+    /**
+     * Fügt ein Sample in den ersten Stack hinzu.
+     * @param filename der Name des Samples, welcher hinzugefügt werden soll. (Ohne die Endung: Samples müssen wave-Dateien sein)
+     */
     public void addSample(String filename){
         if(filename != null){
             Sound tmp = new Sound(filename);
@@ -78,35 +85,6 @@ public class MusicStack {
         }
         stack1to2 = true;
     }
-
-    /*public void delete(String fileName){
-        if(fileName != null){
-            if(!checkStackForString(fileName, sampleStack1)){
-                if(!checkStackForString(fileName, sampleStack2)){
-                    System.out.println("Deleting sound failed");
-                }
-            }
-        }
-    }
-
-    private boolean checkStackForString(String fileName, Stack<Sound> stack){
-        Stack<Sound> tmp  = new Stack<>();
-        while(!stack.isEmpty()){
-            if(!stack.top().getPath().equals("assets/sounds/" + fileName + ".wav")) {
-                tmp.push(stack.top());
-                stack.pop();
-            }else{
-                stack.pop();
-                break;
-            }
-        }
-        while(!tmp.isEmpty()){
-            stack.push(tmp.top());
-            stack.pop();
-        }
-
-        return false;
-    }*/
 
     private int countStack(Stack<Sound> stack){
         int output = 0;
