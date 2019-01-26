@@ -60,7 +60,7 @@ public class ZoneController extends GraphicalObject{
             if (Math.sqrt( Math.pow(tmp.getX()-x,2) + Math.pow(tmp.getY()-y,2) ) <= radius) result = tmp;
         }
         if (Config.DEBUG){
-            if (result != null) System.out.println("DEBUG-INFO: Found Ressource "+result.getType().name()+" at x: "+result.getX()+" and y: "+result.getY());
+            //if (result != null) System.out.println("DEBUG-INFO: Found Ressource "+result.getType().name()+" at x: "+result.getX()+" and y: "+result.getY());
         }
         return result;
     }
@@ -73,7 +73,7 @@ public class ZoneController extends GraphicalObject{
             if (Math.sqrt( Math.pow(tmp.getX()-x,2) + Math.pow(tmp.getY()-y,2) ) <= radius) result = tmp;
         }
         if (Config.DEBUG){
-            if (result != null) System.out.println("DEBUG-INFO: Found Object "+result.getType().name()+" at x: "+result.getX()+" and y: "+result.getY());
+            //if (result != null) System.out.println("DEBUG-INFO: Found Object "+result.getType().name()+" at x: "+result.getX()+" and y: "+result.getY());
         }
         return result;
     }
@@ -86,7 +86,7 @@ public class ZoneController extends GraphicalObject{
             if (Math.sqrt( Math.pow(tmp.getX()-x,2) + Math.pow(tmp.getY()-y,2) ) <= radius) result = tmp;
         }
         if (Config.DEBUG){
-            if (result != null) System.out.println("DEBUG-INFO: Found Object "+result.getType().name()+" at x: "+result.getX()+" and y: "+result.getY());
+            //if (result != null) System.out.println("DEBUG-INFO: Found Object "+result.getType().name()+" at x: "+result.getX()+" and y: "+result.getY());
         }
         return result;
     }
@@ -102,7 +102,7 @@ public class ZoneController extends GraphicalObject{
         if (modD >= 315 && modD <= 325 ) row++; //Down
         if (column >= 0 && column < scenarioTerrain.length && row >= 0 && row <= scenarioTerrain[0].length) result = scenarioTerrain[(int)column][(int)row];
         if (Config.DEBUG){
-            if (result != null) System.out.println("DEBUG-INFO: Found Terrain "+result.getType().name()+" at xTile: "+column+" and yTile: "+row);
+            //if (result != null) System.out.println("DEBUG-INFO: Found Terrain "+result.getType().name()+" at xTile: "+column+" and yTile: "+row);
         }
         return result;
     }

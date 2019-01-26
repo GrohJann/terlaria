@@ -21,7 +21,7 @@ public class ScenarioRessource extends ScenarioObject{
 
     public int abbauen(){
         if (unitsLeft > 0 && !isHidden()) {
-            this.getScenarioController().SOUND_CONTROL.playSound(getType().name);
+            //this.getScenarioController().SOUND_CONTROL.playSound(getType().name);
             int abbau = (int) (10 / tier * Math.random() + 1);
             if (abbau <= unitsLeft) {
                 unitsLeft -= abbau;

@@ -61,7 +61,7 @@ public class ProgramController {
         Background background = new Background(0, 0);
         uiController.registerObject(background);
 
-        //uiController.registerObject(terrain);
+        uiController.registerObject(terrain);
 
         uiController.registerObject(grass);
 
@@ -151,6 +151,7 @@ public class ProgramController {
     private void handlePlayerTerrainCollision(double dt){
         boolean collision = false;
         GraphicalObject[][] terrainArray = terrain.getTerrain();
+
         for (int i= 0; i < terrain.getTerrain().length; i++){
             if (terrainArray[i][(int) (player.getX()) / 32].collidesWith(player))
                 collision = true;

@@ -29,7 +29,7 @@ public abstract class SimplePeasant extends ScenarioCharacter {
         if (gesammeltesHolz < carryCapacity) {
             ScenarioRessource ressource = this.gibRessourceVorMir();
             if (ressource != null) {
-                if (ressource.getType() == ScenarioObjectData.WOOD) gesammeltesHolz += ressource.abbauen();
+                //if (ressource.getType() == ScenarioObjectData.WOOD) gesammeltesHolz += ressource.abbauen();
                 if (gesammeltesHolz > carryCapacity) gesammeltesHolz = carryCapacity;
                 if (Config.DEBUG)
                     System.out.println("DEBUG-INFO: Ressource abgebaut. Aktuelles Bauer-Holz: " + gesammeltesHolz);

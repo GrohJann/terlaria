@@ -27,9 +27,9 @@ public class ScenarioTerrain extends GraphicalObject{
 
     }
 
-    public ScenarioTerrainData getType() {
+    /*public ScenarioTerrainData getType() {
         return type;
-    }
+    }*/
 
     public boolean isBlocking() {
         return isBlocking;

@@ -44,9 +44,9 @@ public abstract class ScenarioObject extends GraphicalObject{
         return hidden;
     }
 
-    public ScenarioObjectData getType() {
+    /*public ScenarioObjectData getType() {
         return type;
-    }
+    }*/
 
     public ScenarioController getScenarioController(){ return scenarioController; }
 }

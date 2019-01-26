@@ -229,9 +229,9 @@ public abstract class ScenarioCharacter extends GraphicalObject{
         return hidden;
     }
 
-    public ScenarioCharacterData getType() {
+   /* public ScenarioCharacterData getType() {
         return type;
-    }
+    }*/
 
     public ScenarioController getScenarioController() {
         return scenarioController;
