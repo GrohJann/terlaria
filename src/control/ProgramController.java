@@ -3,19 +3,14 @@ package control;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.Display;
 import akkgframework.model.abitur.datenstrukturen.Queue;
-import akkgframework.model.fundamental.GraphicalObject;
 import model.Inventory;
 import model.Quest;
 import model.QuestDisplay;
-import model.Terrain;
 import model.objects.ItemDirt;
 import model.objects.Shovel;
 import model.textures.Background;
 import model.textures.blocks.Grass;
 import model.textures.entitys.Player;
-
-import java.awt.event.KeyEvent;
-import java.io.File;
 
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
@@ -86,24 +81,8 @@ public class ProgramController {
     public void updateProgram(double dt){
         programTimer += dt;
         // ******************************************* Ab hier euer eigener Code! *******************************************
-        //handlePlayerTerrainCollision(dt);
-        if (player.collidesWithLeft(grass)) {
-            //player.setX(grass.getX() - player.getWidth());
-            //System.out.println("collides left");
-
-        }
-        if (player.collidesWithRight(grass)) {
-            //player.setX(grass.getX() + grass.getWidth());
-            //System.out.println("collides right");
-        }
-        if (player.collidesWithBottom(grass)) {
-            //player.setY(grass.getY() + grass.getHeight());
-            //System.out.println("collides bottom");
-        }
-        if (!player.collidesWithTop(grass)) {
-            player.addGravity(dt);
-            //System.out.println("collides top");
-        }
+        
+        terrain.handleCollision(player,dt);
 
         soundCon.update(dt);
 
@@ -155,19 +134,6 @@ public class ProgramController {
         quests.enqueue(newQuest12);
         Quest newQuest13 = new Quest(player,"Go to the left", "x",1, 150,"left",false,false);
         quests.enqueue(newQuest13);
-    }
-
-    private void handlePlayerTerrainCollision(double dt){
-        boolean collision = false;
-        GraphicalObject[][] terrainArray = terrain.getTerrain();
-
-        for (int i= 0; i < terrain.getTerrain().length; i++){
-            if (terrainArray[i][(int) (player.getX()) / 32].collidesWith(player))
-                collision = true;
-        }
-
-        if (!collision)
-            player.addGravity(dt);
     }
 
 }

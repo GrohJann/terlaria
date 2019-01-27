@@ -3,7 +3,7 @@ package model.objects;
 import akkgframework.control.fundamental.UIController;
 import akkgframework.model.fundamental.GraphicalObject;
 import model.Inventory;
-import model.Terrain;
+import control.Terrain;
 import model.textures.entitys.Player;
 
 import java.awt.image.BufferedImage;

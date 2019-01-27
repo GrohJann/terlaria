@@ -18,11 +18,10 @@ public class Player extends GraphicalObject {
     private int image;
     private double time;
     private double timer;
-    private boolean lookingLeft;
     private boolean idle;
 
     public Player(UIController uic) {
-        this.tileset = new Tileset("assets/images/terraintiles/entity_player_01.gif", 32, 48);
+        this.tileset = new Tileset("assets/images/terraintiles/entity_player_01.png", 32, 48);
         this.uic = uic;
 
         setX(gd.getDisplayMode().getWidth() / 2);
@@ -33,15 +32,20 @@ public class Player extends GraphicalObject {
         speed = 75;
         image = 0;
         timer = 0;
-        lookingLeft = true;
         idle = true;
     }
 
     public void draw(DrawTool drawTool) {
-        drawTool.drawImage(tileset.getTile(0, image), x , y);
+        drawTool.drawImage(tileset.getTile(image, (int)(timer)), x , y);
     }
 
     public void update(double dt) {
+        
+        time+=dt;
+        
+        /*
+         * movement
+         */
         if (uic.isKeyDown(KeyEvent.VK_W)) {
             y -= 10;
         } else if (uic.isKeyDown(KeyEvent.VK_SPACE)) {
@@ -49,91 +53,28 @@ public class Player extends GraphicalObject {
         }
         if (uic.isKeyDown(KeyEvent.VK_A)) {
             x = x - speed * dt;
-            lookingLeft = true;
             idle = false;
+            image = 0;
         } else if (uic.isKeyDown(KeyEvent.VK_D)) {
             x = x + speed * dt;
-            lookingLeft = false;
             idle = false;
+            image = 1;
         } else {
             idle = true;
         }
 
+        
         /*
          * animation
          */
-        timer = timer + dt * 2;
-
         if (!idle) {
-            if (lookingLeft) {
-                if (timer >= 0 && timer <= 0.5) {
-                    image = 0;
-                }
-                if (timer >= 0.5 && timer <= 1) {
-                    image = 1;
-                }
-                if (timer >= 1 && timer <= 1.5) {
-                    image = 2;
-                }
-                if (timer >= 1.5 && timer <= 2) {
-                    image = 3;
-                }
-
-
-                if (timer >= 2 && timer <= 2.5) {
-                    image = 4;
-                }
-                if (timer >= 2.5 && timer <= 3) {
-                    image = 5;
-                }
-                if (timer >= 3 && timer <= 3.5) {
-                    image = 6;
-                }
-                if (timer >= 3.5 && timer <= 4) {
-                    image = 7;
-                }
-
-
-                if (timer >= 4 && timer <= 4.5) {
-                    image = 8;
-                }
-                if (timer >= 4.5 && timer <= 5) {
-                    image = 9;
-                }
-                if (timer >= 5 && timer <= 5.5) {
-                    image = 10;
-                }
-                if (timer >= 5.5 && timer <= 6) {
-                    image = 11;
-                }
-
-
-                if (timer >= 6 && timer <= 6.5) {
-                    image = 12;
-                }
-                if (timer >= 6.5 && timer <= 7) {
-                    image = 13;
-                    timer = 0;
-                }
-            } else {
-                if (timer >= 0 && timer <= 0.5) {
-                    image = 14;
-                }
-                if (timer >= 0.5 && timer <= 1) {
-                    image = 15;
-                }
-
-                if (timer >= 1 && timer <= 1.5) {
-                    image = 16;
-                }
-
-                if (timer >= 1.5 && timer <= 2) {
-                    image = 17;
-                    timer = 0;
-                }
-            }
+            timer = timer + dt * 9;
+        }else {
+            timer = 0;
         }
-        time+=dt;
+        
+        if (timer > 14) timer = 0;
+        
     }
 
     public int getTask(String task,String direction){
@@ -154,84 +95,16 @@ public class Player extends GraphicalObject {
     }
 
     public void addGravity(double dt) {
-        y += speed * dt;
+        y += 200 * dt;
     }
     
     
     /**
-     * unnötige getter und setter
+     * getter und setter
      */
-
-    public Tileset getTileset() {
-        return tileset;
-    }
-
-    public void setTileset(Tileset tileset) {
-        this.tileset = tileset;
-    }
-
-    public UIController getUic() {
-        return uic;
-    }
-
-    public void setUic(UIController uic) {
-        this.uic = uic;
-    }
-
-    public GraphicsDevice getGd() {
-        return gd;
-    }
-
-    public void setGd(GraphicsDevice gd) {
-        this.gd = gd;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
-
-    public double getTime() {
-        return time;
-    }
-
+    
     public void setTime(double time) {
         this.time = time;
-    }
-
-    public double getTimer() {
-        return timer;
-    }
-
-    public void setTimer(double timer) {
-        this.timer = timer;
-    }
-
-    public boolean isLookingLeft() {
-        return lookingLeft;
-    }
-
-    public void setLookingLeft(boolean lookingLeft) {
-        this.lookingLeft = lookingLeft;
-    }
-
-    public boolean isIdle() {
-        return idle;
-    }
-
-    public void setIdle(boolean idle) {
-        this.idle = idle;
     }
 }
 

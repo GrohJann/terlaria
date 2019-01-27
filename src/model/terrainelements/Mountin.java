@@ -6,8 +6,7 @@ import model.textures.blocks.Dirt;
 import model.textures.blocks.Grass;
 import model.textures.blocks.Stone;
 
-public class Abyss {
-    
+public class Mountin {
     GraphicalObject[][] terrainelement;
     Grass grass;
     Dirt dirt;
@@ -15,7 +14,7 @@ public class Abyss {
     
     int posX;
     
-    public Abyss(int posX) {
+    public Mountin(int posX) {
         this.posX = posX;
         generateTerrain();
     }
@@ -23,46 +22,73 @@ public class Abyss {
     private void generateTerrain() {
         terrainelement = new GraphicalObject[][]{
                 {
-                        grass = new Grass(posX + (32 * 6), 32 * 15),
-                        grass = new Grass(posX + (32 * 7), 32 * 15),
-                        grass = new Grass(posX + (32 * 8), 32 * 15),
+                        grass = new Grass(posX + (32 * 7), 32 * 13),
+                        grass = new Grass(posX + (32 * 8), 32 * 13),
+                },
+        
+                {
+                        grass = new Grass(posX + (32 * 5), 32 * 14),
+                        grass = new Grass(posX + (32 * 6), 32 * 14),
+                        dirt = new Dirt(posX + (32 * 7), 32 * 14),
+                        dirt = new Dirt(posX + (32 * 8), 32 * 14),
+                        grass = new Grass(posX + (32 * 9), 32 * 14),
                 },
                 
                 {
-                        grass = new Grass(posX + (32 * 5), 32 * 16),
+                        grass = new Grass(posX + (32 * 4), 32 * 15),
+                        dirt = new Dirt(posX + (32 * 5), 32 * 15),
+                        dirt = new Dirt(posX + (32 * 6), 32 * 15),
+                        dirt = new Dirt(posX + (32 * 7), 32 * 15),
+                        dirt = new Dirt(posX + (32 * 8), 32 * 15),
+                        dirt = new Dirt(posX + (32 * 9), 32 * 15),
+                        grass = new Grass(posX + (32 * 10), 32 * 15),
+                },
+                
+                {
+                        grass = new Grass(posX + (32 * 2), 32 * 16),
+                        grass = new Grass(posX + (32 * 3), 32 * 16),
+                        dirt = new Dirt(posX + (32 * 4), 32 * 16),
+                        dirt = new Dirt(posX + (32 * 5), 32 * 16),
                         dirt = new Dirt(posX + (32 * 6), 32 * 16),
                         dirt = new Dirt(posX + (32 * 7), 32 * 16),
                         dirt = new Dirt(posX + (32 * 8), 32 * 16),
-                        grass = new Grass(posX + (32 * 9), 32 * 16),
-                        grass = new Grass(posX + (32 * 10), 32 * 16),
+                        dirt = new Dirt(posX + (32 * 9), 32 * 16),
+                        dirt = new Dirt(posX + (32 * 10), 32 * 16),
+                        grass = new Grass(posX + (32 * 11), 32 * 16),
+                        grass = new Grass(posX + (32 * 12), 32 * 16),
                 },
-                
+        
                 {
-                        grass = new Grass(posX + (32 * 2), 32 * 17),
-                        grass = new Grass(posX + (32 * 3), 32 * 17),
-                        grass = new Grass(posX + (32 * 4), 32 * 17),
+                        grass = new Grass(posX + (32 * 1), 32 * 17),
+                        dirt = new Dirt(posX + (32 * 2), 32 * 17),
+                        dirt = new Dirt(posX + (32 * 3), 32 * 17),
+                        dirt = new Dirt(posX + (32 * 4), 32 * 17),
                         dirt = new Dirt(posX + (32 * 5), 32 * 17),
                         dirt = new Dirt(posX + (32 * 6), 32 * 17),
-                        dirt = new Dirt(posX + (32 * 7), 32 * 17),
-                        dirt = new Dirt(posX + (32 * 8), 32 * 17),
+                        stone = new Stone(posX + (32 * 7), 32 * 17),
+                        stone = new Stone(posX + (32 * 8), 32 * 17),
                         dirt = new Dirt(posX + (32 * 9), 32 * 17),
                         dirt = new Dirt(posX + (32 * 10), 32 * 17),
-                        grass = new Grass(posX + (32 * 11), 32 * 17),
+                        dirt = new Dirt(posX + (32 * 11), 32 * 17),
+                        dirt = new Dirt(posX + (32 * 12), 32 * 17),
+                        grass = new Grass(posX + (32 * 13), 32 * 17),
                 },
                 
                 {
                         grass = new Grass(posX + (32 * 0), 32 * 18),
-                        grass = new Grass(posX + (32 * 1), 32 * 18),
+                        dirt = new Dirt(posX + (32 * 1), 32 * 18),
                         dirt = new Dirt(posX + (32 * 2), 32 * 18),
                         dirt = new Dirt(posX + (32 * 3), 32 * 18),
                         dirt = new Dirt(posX + (32 * 4), 32 * 18),
-                        dirt = new Dirt(posX + (32 * 5), 32 * 18),
-                        dirt = new Dirt(posX + (32 * 6), 32 * 18),
-                        dirt = new Dirt(posX + (32 * 7), 32 * 18),
-                        dirt = new Dirt(posX + (32 * 8), 32 * 18),
-                        dirt = new Dirt(posX + (32 * 9), 32 * 18),
-                        dirt = new Dirt(posX + (32 * 10), 32 * 18),
+                        stone = new Stone(posX + (32 * 5), 32 * 18),
+                        stone = new Stone(posX + (32 * 6), 32 * 18),
+                        stone = new Stone(posX + (32 * 7), 32 * 18),
+                        stone = new Stone(posX + (32 * 8), 32 * 18),
+                        stone = new Stone(posX + (32 * 9), 32 * 18),
+                        stone = new Stone(posX + (32 * 10), 32 * 18),
                         dirt = new Dirt(posX + (32 * 11), 32 * 18),
+                        dirt = new Dirt(posX + (32 * 12), 32 * 18),
+                        dirt = new Dirt(posX + (32 * 13), 32 * 18),
                         grass = new Grass(posX + (32 * 14), 32 * 18),
                 },
                 
@@ -71,36 +97,40 @@ public class Abyss {
                         dirt = new Dirt(posX + (32 * 1), 32 * 19),
                         dirt = new Dirt(posX + (32 * 2), 32 * 19),
                         dirt = new Dirt(posX + (32 * 3), 32 * 19),
-                        dirt = new Dirt(posX + (32 * 4), 32 * 19),
-                        dirt = new Dirt(posX + (32 * 5), 32 * 19),
+                        stone = new Stone(posX + (32 * 4), 32 * 19),
+                        stone = new Stone(posX + (32 * 5), 32 * 19),
                         stone = new Stone(posX + (32 * 6), 32 * 19),
                         stone = new Stone(posX + (32 * 7), 32 * 19),
                         stone = new Stone(posX + (32 * 8), 32 * 19),
-                        dirt = new Dirt(posX + (32 * 9), 32 * 19),
-                        dirt = new Dirt(posX + (32 * 10), 32 * 19),
-                        dirt = new Dirt(posX + (32 * 11), 32 * 19),
+                        stone = new Stone(posX + (32 * 9), 32 * 19),
+                        stone = new Stone(posX + (32 * 10), 32 * 19),
+                        stone = new Stone(posX + (32 * 11), 32 * 19),
+                        dirt = new Dirt(posX + (32 * 12), 32 * 19),
+                        dirt = new Dirt(posX + (32 * 13), 32 * 19),
                         dirt = new Dirt(posX + (32 * 14), 32 * 19),
                 },
                 
                 {
                         dirt = new Dirt(posX + (32 * 0), 32 * 20),
                         dirt = new Dirt(posX + (32 * 1), 32 * 20),
-                        dirt = new Dirt(posX + (32 * 2), 32 * 20),
-                        dirt = new Dirt(posX + (32 * 3), 32 * 20),
-                        dirt = new Dirt(posX + (32 * 4), 32 * 20),
+                        stone = new Stone(posX + (32 * 2), 32 * 20),
+                        stone = new Stone(posX + (32 * 3), 32 * 20),
+                        stone = new Stone(posX + (32 * 4), 32 * 20),
                         stone = new Stone(posX + (32 * 5), 32 * 20),
                         stone = new Stone(posX + (32 * 6), 32 * 20),
                         stone = new Stone(posX + (32 * 7), 32 * 20),
                         stone = new Stone(posX + (32 * 8), 32 * 20),
                         stone = new Stone(posX + (32 * 9), 32 * 20),
                         stone = new Stone(posX + (32 * 10), 32 * 20),
-                        dirt = new Dirt(posX + (32 * 11), 32 * 20),
+                        stone = new Stone(posX + (32 * 11), 32 * 20),
+                        stone = new Stone(posX + (32 * 12), 32 * 20),
+                        dirt = new Dirt(posX + (32 * 13), 32 * 20),
                         dirt = new Dirt(posX + (32 * 14), 32 * 20),
                 },
                 
                 {
                         dirt = new Dirt(posX + (32 * 0), 32 * 21),
-                        dirt = new Dirt(posX + (32 * 1), 32 * 21),
+                        stone = new Stone(posX + (32 * 1), 32 * 21),
                         stone = new Stone(posX + (32 * 2), 32 * 21),
                         stone = new Stone(posX + (32 * 3), 32 * 21),
                         stone = new Stone(posX + (32 * 4), 32 * 21),
@@ -111,6 +141,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 21),
                         stone = new Stone(posX + (32 * 10), 32 * 21),
                         stone = new Stone(posX + (32 * 11), 32 * 21),
+                        stone = new Stone(posX + (32 * 12), 32 * 21),
+                        stone = new Stone(posX + (32 * 13), 32 * 21),
                         dirt = new Dirt(posX + (32 * 14), 32 * 21),
                 },
                 
@@ -127,6 +159,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 22),
                         stone = new Stone(posX + (32 * 10), 32 * 22),
                         stone = new Stone(posX + (32 * 11), 32 * 22),
+                        stone = new Stone(posX + (32 * 12), 32 * 22),
+                        stone = new Stone(posX + (32 * 13), 32 * 22),
                         stone = new Stone(posX + (32 * 14), 32 * 22),
                 },
                 
@@ -143,6 +177,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 23),
                         stone = new Stone(posX + (32 * 10), 32 * 23),
                         stone = new Stone(posX + (32 * 11), 32 * 23),
+                        stone = new Stone(posX + (32 * 12), 32 * 23),
+                        stone = new Stone(posX + (32 * 13), 32 * 23),
                         stone = new Stone(posX + (32 * 14), 32 * 23),
                 },
                 
@@ -159,6 +195,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 24),
                         stone = new Stone(posX + (32 * 10), 32 * 24),
                         stone = new Stone(posX + (32 * 11), 32 * 24),
+                        stone = new Stone(posX + (32 * 12), 32 * 24),
+                        stone = new Stone(posX + (32 * 13), 32 * 24),
                         stone = new Stone(posX + (32 * 14), 32 * 24),
                 },
                 
@@ -175,6 +213,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 25),
                         stone = new Stone(posX + (32 * 10), 32 * 25),
                         stone = new Stone(posX + (32 * 11), 32 * 25),
+                        stone = new Stone(posX + (32 * 12), 32 * 25),
+                        stone = new Stone(posX + (32 * 13), 32 * 25),
                         stone = new Stone(posX + (32 * 14), 32 * 25),
                 },
                 
@@ -191,6 +231,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 26),
                         stone = new Stone(posX + (32 * 10), 32 * 26),
                         stone = new Stone(posX + (32 * 11), 32 * 26),
+                        stone = new Stone(posX + (32 * 12), 32 * 26),
+                        stone = new Stone(posX + (32 * 13), 32 * 26),
                         stone = new Stone(posX + (32 * 14), 32 * 26),
                 },
                 
@@ -207,6 +249,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 27),
                         stone = new Stone(posX + (32 * 10), 32 * 27),
                         stone = new Stone(posX + (32 * 11), 32 * 27),
+                        stone = new Stone(posX + (32 * 12), 32 * 27),
+                        stone = new Stone(posX + (32 * 13), 32 * 27),
                         stone = new Stone(posX + (32 * 14), 32 * 27),
                 },
                 
@@ -223,6 +267,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 28),
                         stone = new Stone(posX + (32 * 10), 32 * 28),
                         stone = new Stone(posX + (32 * 11), 32 * 28),
+                        stone = new Stone(posX + (32 * 12), 32 * 28),
+                        stone = new Stone(posX + (32 * 13), 32 * 28),
                         stone = new Stone(posX + (32 * 14), 32 * 28),
                 },
                 
@@ -239,6 +285,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 29),
                         stone = new Stone(posX + (32 * 10), 32 * 29),
                         stone = new Stone(posX + (32 * 11), 32 * 29),
+                        stone = new Stone(posX + (32 * 12), 32 * 29),
+                        stone = new Stone(posX + (32 * 13), 32 * 29),
                         stone = new Stone(posX + (32 * 14), 32 * 29),
                 },
                 
@@ -255,7 +303,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 30),
                         stone = new Stone(posX + (32 * 10), 32 * 30),
                         stone = new Stone(posX + (32 * 11), 32 * 30),
-                        grass = new Grass(posX + (32 * 13), 32 * 30),
+                        stone = new Stone(posX + (32 * 12), 32 * 30),
+                        stone = new Stone(posX + (32 * 13), 32 * 30),
                         stone = new Stone(posX + (32 * 14), 32 * 30),
                 },
                 
@@ -272,7 +321,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 31),
                         stone = new Stone(posX + (32 * 10), 32 * 31),
                         stone = new Stone(posX + (32 * 11), 32 * 31),
-                        dirt = new Dirt(posX + (32 * 13), 32 * 31),
+                        stone = new Stone(posX + (32 * 12), 32 * 31),
+                        stone = new Stone(posX + (32 * 13), 32 * 31),
                         stone = new Stone(posX + (32 * 14), 32 * 31),
                 },
                 
@@ -289,7 +339,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 32),
                         stone = new Stone(posX + (32 * 10), 32 * 32),
                         stone = new Stone(posX + (32 * 11), 32 * 32),
-                        dirt = new Dirt(posX + (32 * 13), 32 * 32),
+                        stone = new Stone(posX + (32 * 12), 32 * 32),
+                        stone = new Stone(posX + (32 * 13), 32 * 32),
                         stone = new Stone(posX + (32 * 14), 32 * 32),
                 },
                 
@@ -306,7 +357,8 @@ public class Abyss {
                         stone = new Stone(posX + (32 * 9), 32 * 33),
                         stone = new Stone(posX + (32 * 10), 32 * 33),
                         stone = new Stone(posX + (32 * 11), 32 * 33),
-                        dirt = new Dirt(posX + (32 * 13), 32 * 33),
+                        stone = new Stone(posX + (32 * 12), 32 * 33),
+                        stone = new Stone(posX + (32 * 13), 32 * 33),
                         stone = new Stone(posX + (32 * 14), 32 * 33),
                 },
             
@@ -333,3 +385,5 @@ public class Abyss {
         return 32 * 15;
     }
 }
+
+

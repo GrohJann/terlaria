@@ -340,5 +340,13 @@ public class Plain {
     public GraphicalObject[][] getTerrainelement() {
         return terrainelement;
     }
+    
+    public int getPosX() {
+        return posX;
+    }
+    
+    public  int getWidth(){
+        return 32 * 15;
+    }
 }
 

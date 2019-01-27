@@ -345,4 +345,12 @@ public class SmallHill {
     public GraphicalObject[][] getTerrainelement() {
         return terrainelement;
     }
+    
+    public int getPosX() {
+        return posX;
+    }
+    
+    public  int getWidth(){
+        return 32 * 15;
+    }
 }
