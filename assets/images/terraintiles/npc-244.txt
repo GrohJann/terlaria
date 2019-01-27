@@ -1,8 +1,0 @@
-width=36
-height=22
-gfxwidth=36
-gfxheight=22
-frames=2
-framestyle=1
-noiceball=1
-jumphurt=1

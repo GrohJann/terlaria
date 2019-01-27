@@ -1,7 +1,0 @@
-width=28
-height=46
-gfxwidth=28
-gfxheight=46
-frames=1
-framestyle=1
-speed=0
