@@ -77,6 +77,12 @@ public class Player extends GraphicalObject {
         
     }
 
+    /**
+     * gibt wert zur überprüfung zurück
+     * @param task was zurück gegeben wird
+     * @param direction ob links oder rechts
+     * @return
+     */
     public int getTask(String task,String direction){
         if(task.equalsIgnoreCase("y")){
             return (int)y;
@@ -93,7 +99,6 @@ public class Player extends GraphicalObject {
         }
         return 0;
     }
-
     public void addGravity(double dt) {
         y += 200 * dt;
     }
