@@ -81,7 +81,7 @@ public class SoundCon {
         switch (stage) {
             case 1:
                 melody.addSample("melody D2");  //Fügt Sample "melody D2.wav" der Melodie hinzu.
-                stage++;                                 //Erhöht die Stage um 1, damit dieser Fall nur einmal aufgerufen wird.
+                stage++;                                //Erhöht die Stage um 1, damit dieser Fall nur einmal aufgerufen wird.
                 break;
             case 3:
                 bassPlays = true;                       //Aktiviert den Bass.

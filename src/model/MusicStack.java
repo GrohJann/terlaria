@@ -32,40 +32,45 @@ public class MusicStack {
         }
     }
 
+
+    /**
+     * Spielt den abzuspielenden Sound ab und packt ihn auf den anderen Stack
+     */
     public void playSample(){
-        if(!sampleStack1.isEmpty() || !sampleStack2.isEmpty()) {
-            if (stack1to2 && !sampleStack1.isEmpty()) {
-                sampleStack1.top().play();
-                //System.out.println("1 - " + sampleStack1.top().getPath() + " - " + sampleStack1.top().toString());
-                sampleStack2.push(sampleStack1.top());
-                sampleStack1.pop();
-                if (sampleStack1.isEmpty()) {
-                    stack1to2 = false;
-                    sampleStack1.push(sampleStack2.top());
-                    sampleStack2.pop();
+        if(!sampleStack1.isEmpty() || !sampleStack2.isEmpty()) {    //Tut das Folgende nur, wenn es Objekte auf einem der beiden oder beiden Stacks gibt.
+            if (stack1to2 && !sampleStack1.isEmpty()) {     //Wenn die Samples vom ersten auf den zweiten gelegt werden sollen:
+                sampleStack1.top().play();                  //Spielen des obersten Sounds von dem ersten Stack.
+                sampleStack2.push(sampleStack1.top());      //Der Sound wird auf den zweiten Stack gelegt...
+                sampleStack1.pop();                         //...und von dem ersten genommen.
+                if (sampleStack1.isEmpty()) {               //Und wenn Stack 1 nun leer ist:
+                    stack1to2 = false;                      //Wechseln der "Richtung": nun von Stack 2 auf Stack 1 und nicht mehr umgekehrt.
+                    sampleStack1.push(sampleStack2.top());  //Der Sound wird wieder auf den ersten Stack gelegt...
+                    sampleStack2.pop();                     //...und wieder von dem zweiten genommen, damit er nicht doppelt abgespielt wird.
                 }
-            } else if(!stack1to2 && !sampleStack2.isEmpty()) {
-                sampleStack2.top().play();
-                //System.out.println("2 - " + sampleStack2.top().getPath() + " - " + sampleStack2.top().toString());
-                sampleStack1.push(sampleStack2.top());
-                sampleStack2.pop();
-                if (sampleStack2.isEmpty()) {
-                    stack1to2 = true;
-                    sampleStack2.push(sampleStack1.top());
-                    sampleStack1.pop();
+            } else if(!stack1to2 && !sampleStack2.isEmpty()) {  //Wenn die Samples vom zweiten auf den ersten gelegt werden sollen:
+                sampleStack2.top().play();                  //Spielen des obersten Sounds von dem zweiten Stack.
+                sampleStack1.push(sampleStack2.top());      //Der Sound wird auf den ersten Stack gelegt...
+                sampleStack2.pop();                         //...und von dem zweiten genommen.
+                if (sampleStack2.isEmpty()) {               //Und wenn Stack 2 nun leer ist:
+                    stack1to2 = true;                       //Wechseln der "Richtung": nun von Stack 1 auf Stack 2 und nicht mehr umgekehrt.
+                    sampleStack2.push(sampleStack1.top());  //Der Sound wird wieder auf den zweiten Stack gelegt...
+                    sampleStack1.pop();                     //...und wieder von dem ersten genommen, damit er nicht doppelt abgespielt wird.
                 }
-            } else if (!sampleStack1.isEmpty()){
-                stack1to2 = true;
-            } else if (!sampleStack2.isEmpty()){
+            } else if (!sampleStack1.isEmpty()){            //Damit es nicht passiert, dass stack1to2 nicht mehr mit den Stacks übereinstimmt
+                stack1to2 = true;                           //wird es falls dies der Fall ist wieder zurückgesetzt.
+            } else if (!sampleStack2.isEmpty()){            //(z.B. bei einer Zufallsgenerierung)
                 stack1to2 = false;
             }
         }
     }
 
+    /**
+     * Zufälliges Rearrangieren der Stacks
+     */
     public void randomize(){
-        int length = countStack(sampleStack1) + countStack(sampleStack2);
-        Sound[] arr = new Sound[length];
-        for(int i = 0; i < arr.length; i++){
+        int length = countStack(sampleStack1) + countStack(sampleStack2);   //Beide Stacks werden gezählt
+        Sound[] arr = new Sound[length];                //Ein Array wird mit der Länge dieser wird erstellt.
+        for(int i = 0; i < arr.length; i++){            //Einfügen aller Sounds in das Array
             if(!sampleStack1.isEmpty()) {
                 arr[i] = sampleStack1.top();
                 sampleStack1.pop();
@@ -75,15 +80,15 @@ public class MusicStack {
             }
         }
         for (int i = 0; i < arr.length; i++) {
-            Sound tmp = arr[i];
-            int rand = (int) (Math.random() * arr.length);
+            Sound tmp = arr[i];                             //Tauschen von jedem Objekt innerhalb des Arrays
+            int rand = (int) (Math.random() * arr.length);  //mit einem zufälligem anderen.
             arr[i] = arr[rand];
             arr[rand] = tmp;
         }
-        for(int i = 0; i < arr.length; i++){
+        for(int i = 0; i < arr.length; i++){            //Die Sounds werden in den ersten Stack zurückgelegt.
             sampleStack1.push(arr[i]);
         }
-        stack1to2 = true;
+        stack1to2 = true;                               //Um Potenzielle Fehler zu beheben wird die "Richtung" auf Stack 1 zu Stack 2 gesetzt.
     }
 
     private int countStack(Stack<Sound> stack){
