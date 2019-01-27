@@ -17,7 +17,7 @@ public class Stone extends GraphicalObject {
         setKind("stone");
 
 
-        this.createAndSetNewImage("assets/images/terraintiles/block_stone.gif");
+        this.createAndSetNewImage("assets/images/custom/stone.png");
     }
 
     public void draw(DrawTool drawTool) {

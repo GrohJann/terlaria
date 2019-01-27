@@ -13,7 +13,7 @@ public class Shovel extends Item {
 
     public Shovel(String name, int amount){
         super(name, amount);
-        this.setImage(createNewImage("assets/images/objects/barel.png"));
+        this.setImage(createNewImage("assets/images/custom/shovel.png"));
     }
 
     @Override

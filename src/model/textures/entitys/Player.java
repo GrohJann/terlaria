@@ -21,7 +21,7 @@ public class Player extends GraphicalObject {
     private boolean idle;
 
     public Player(UIController uic) {
-        this.tileset = new Tileset("assets/images/terraintiles/entity_player_01.png", 32, 48);
+        this.tileset = new Tileset("assets/images/custom/player.png", 32, 48);
         this.uic = uic;
 
         setX(gd.getDisplayMode().getWidth() / 2);
