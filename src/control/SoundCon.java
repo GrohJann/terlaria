@@ -35,7 +35,7 @@ public class SoundCon {
         //Initialisierung der Abspielgeschwindigkeit der verschiedenen Stimmen.
         melodySpeed = 1;
         bassSpeed = 4;
-        cymbalSpeed = 0.25;
+        cymbalSpeed = 2;
 
         //Initialisierung der Variable, welcher der jeweiligen Stimme "sagt", ob sie gespielt werden soll.
         melodyPlays = true;
@@ -46,7 +46,6 @@ public class SoundCon {
         melody.addSample("melody C3");
         melody.addSample("melody D3");
         //Hinzufügen von Stille in den SampleStack für die Cymbals (Becken).
-        cymbals.addSample("silence");
         cymbals.addSample("silence");
         cymbals.addSample("silence");
     }
@@ -108,7 +107,7 @@ public class SoundCon {
                 cymbalsPlay = true;                     //Aktiviert die Cymbals
                 bass.addSample("bass F3");
                 bass.addSample("bass D2");
-                cymbals.addSample("temp C high");
+                cymbals.addSample("cymbal crash");
                 melody.randomize();                     //Arrangiert die Melodie zufällig neu.
                 stage++;
                 break;
@@ -120,14 +119,23 @@ public class SoundCon {
             case 13:
                 melody.randomize();
                 bass.addSample("bass A2");
-                cymbals.addSample("temp C");
+                cymbals.addSample("cymbal china dark");
                 cymbals.addSample("silence");
                 cymbals.addSample("silence");
                 stage++;
                 break;
             case 15:
+                cymbals.addSample("silence");
+                cymbals.addSample("cymbal china warm");
+                cymbals.addSample("silence");
                 cymbals.randomize();                    //Arrangiert die Cymbals zufällig neu.
                 bass.randomize();                       //Arrangiert den Bass zufällig neu.
+                stage++;
+                break;
+            case 17:
+                cymbals.randomize();
+                bass.randomize();
+                melody.randomize();
                 stage++;
                 break;
         }

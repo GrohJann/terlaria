@@ -11,7 +11,7 @@ public class Dirt extends GraphicalObject {
         width = 32;
         height = 32;
         setKind("dirt");
-        this.createAndSetNewImage("assets/images/terraintiles/block_dirt.gif");
+        this.createAndSetNewImage("assets/images/custom/dirt.png");
     }
 
     public void draw(DrawTool drawTool) {
