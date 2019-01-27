@@ -81,6 +81,7 @@ public class SoundCon {
         switch (stage) {
             case 1:
                 melody.addSample("melody D2");  //Fügt Sample "melody D2.wav" der Melodie hinzu.
+                melody.addSample("melody F3");
                 stage++;                                //Erhöht die Stage um 1, damit dieser Fall nur einmal aufgerufen wird.
                 break;
             case 3:
@@ -92,8 +93,9 @@ public class SoundCon {
                 stage++;
                 break;
             case 5:
+                cymbalsPlay = true;                     //Aktiviert die Cymbals
+                cymbals.addSample("cymbal crash");
                 melody.addSample("melody A2");
-                melody.addSample("melody F3");
                 bass.addSample("bass C3");
                 stage++;
                 break;
@@ -101,13 +103,17 @@ public class SoundCon {
                 melody.addSample("melody G3");
                 melodySpeed = 0.5;                      //Erhöht die Geschwindigkeit der Melodie.
                 bass.addSample("bass F2");
+                cymbals.addSample("cymbal china dark");
+                cymbals.addSample("silence");
+                cymbals.addSample("silence");
                 stage++;
                 break;
             case 9:
-                cymbalsPlay = true;                     //Aktiviert die Cymbals
                 bass.addSample("bass F3");
                 bass.addSample("bass D2");
-                cymbals.addSample("cymbal crash");
+                cymbals.addSample("silence");
+                cymbals.addSample("cymbal china warm");
+                cymbals.addSample("silence");
                 melody.randomize();                     //Arrangiert die Melodie zufällig neu.
                 stage++;
                 break;
@@ -119,15 +125,9 @@ public class SoundCon {
             case 13:
                 melody.randomize();
                 bass.addSample("bass A2");
-                cymbals.addSample("cymbal china dark");
-                cymbals.addSample("silence");
-                cymbals.addSample("silence");
                 stage++;
                 break;
             case 15:
-                cymbals.addSample("silence");
-                cymbals.addSample("cymbal china warm");
-                cymbals.addSample("silence");
                 cymbals.randomize();                    //Arrangiert die Cymbals zufällig neu.
                 bass.randomize();                       //Arrangiert den Bass zufällig neu.
                 stage++;

@@ -48,7 +48,7 @@ public class ProgramController {
         this.uiController = uiController;
         terrain = new Terrain();
         soundCon = new SoundCon();
-        grass = new Grass(1000, 200);
+        //grass = new Grass(1000, 200);
         player = new Player(uiController);
     }
 
@@ -63,7 +63,7 @@ public class ProgramController {
 
         uiController.registerObject(terrain);
 
-        uiController.registerObject(grass);
+        //uiController.registerObject(grass);
 
 
         uiController.registerObject(player);
@@ -114,19 +114,19 @@ public class ProgramController {
      */
     private void createQuests(){
         quests = new Queue<>();
-        Quest newQuest = new Quest(player,"Go to the right - Press D", "x",1, gd.getDisplayMode().getWidth()-100,"right",false,true);
+        Quest newQuest = new Quest(player,"Go to the right - Press D", "x",1, gd.getDisplayMode().getWidth()-200,"right",false,true);
         quests.enqueue(newQuest);
         Quest newQuest1 = new Quest(player,"Spend time in the game - Just wait", "time",10, 10 ,"",false,false);
         quests.enqueue(newQuest1);
         Quest newQuest2 = new Quest(player,"Go to the left - Press A", "x",1,5,"left",false,true);
         quests.enqueue(newQuest2);
-        Quest newQuest3 = new Quest(player,"Go to the right", "x",1, gd.getDisplayMode().getWidth()-100,"right",false,false);
+        Quest newQuest3 = new Quest(player,"Go to the right", "x",1, gd.getDisplayMode().getWidth()-200,"right",false,false);
         quests.enqueue(newQuest3);
         Quest newQuest4 = new Quest(player,"Go to the left", "x",1,5, "left",false,false);
         quests.enqueue(newQuest4);
-        Quest newQuest5 = new Quest(player,"Spend time in the game", "time",60,60, "",false,false);
+        Quest newQuest5 = new Quest(player,"Spend time in the game", "time",30,30, "",false,false);
         quests.enqueue(newQuest5);
-        Quest newQuest6 = new Quest(player,"Go to the right", "x",1, gd.getDisplayMode().getWidth()-100,"right",false,false);
+        Quest newQuest6 = new Quest(player,"Go to the right", "x",1, gd.getDisplayMode().getWidth()-150,"right",false,false);
         quests.enqueue(newQuest6);
         Quest newQuest7 = new Quest(player,"Go to the left", "x",1, 5,"left",false,false);
         quests.enqueue(newQuest7);

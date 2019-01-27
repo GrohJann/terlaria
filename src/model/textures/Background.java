@@ -9,7 +9,7 @@ public class Background extends GraphicalObject {
         x = posX;
         y = posY;
 
-        this.createAndSetNewImage("assets/images/terraintiles/background_day.gif");
+        this.createAndSetNewImage("assets/images/custom/background.png");
     }
 
     public void draw(DrawTool drawTool) {
