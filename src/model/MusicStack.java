@@ -91,6 +91,12 @@ public class MusicStack {
         stack1to2 = true;                               //Um Potenzielle Fehler zu beheben wird die "Richtung" auf Stack 1 zu Stack 2 gesetzt.
     }
 
+    /**
+     * Das Zählen der Objekte innerhalb eines Stacks:
+     * Ein Stack wird in einen anderen übertragen und bei jedem Objekt, welches übertragen wird wird eine Variable um 1 erhöht.
+     * @param stack der zu zählende Stack
+     * @return Die Nummer der Objekte
+     */
     private int countStack(Stack<Sound> stack){
         int output = 0;
         if(stack != null) {

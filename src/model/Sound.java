@@ -6,18 +6,19 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 public class Sound {
+
+    //Referenzen
     private String path;
     private Clip clip;
+
+    //Konstruktor
     public Sound(String fileName) {
-        // specify the sound to play
-        // (assuming the sound can be played by the audio system)
-        // from a wave File
         try {
             File file = new File("assets/sounds/" +fileName +".wav");
             path = "assets/sounds/" +fileName +".wav";
             if (file.exists()) {
                 AudioInputStream sound = AudioSystem.getAudioInputStream(file);
-                // load the sound into memory (a Clip)
+                // lädt den Sound in den Specher
                 clip = AudioSystem.getClip();
                 clip.open(sound);
             }
@@ -41,19 +42,24 @@ public class Sound {
             e.printStackTrace();
             throw new RuntimeException("Sound: Line Unavailable Exception Error: " + e);
         }
-
-        // play, stop, loop the sound clip
     }
+
+    //Abspielen des Sounds
     public void play(){
-        clip.setFramePosition(0);  // Must always rewind!
+        clip.setFramePosition(0);  // Zurücksetzen des Sounds auf den Ursprung
         clip.start();
     }
+
+    //Loopen des Sounds
     public void loop(){
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
+
+    //Stoppen des Sounds
     public void stop(){
         clip.stop();
     }
+
     public String getPath(){
         return path;
     }
